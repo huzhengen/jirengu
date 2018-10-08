@@ -1,5 +1,5 @@
 if [ -d $1 ]; then
-  echo '$1 已经存在了'
+  echo '该文件夹已经存在了'
   exit 1
 else
   mkdir $1
