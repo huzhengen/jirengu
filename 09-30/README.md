@@ -1,5 +1,9 @@
 ### 09-30
 
+[如何使用ls、cat、mv、touch](https://huzhengen.github.io/2018/09/30/how-to-use-ls-cat-mv-touch/)
+
+[三条命令入门git](https://huzhengen.github.io/2018/10/03/git-intro/)
+
 ~ 用户目录（我的是windows，是C:\Users\Administrator目录，命令`pwd`可直接查看是具体哪个目录）（在命令行输入`cd ~`进入该目录）
 
 . 当前目录
