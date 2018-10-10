@@ -41,3 +41,7 @@ table>((colgroup>col)+(thead>tr>th)+(tbody>tr>td)+(tfoot>tr>td))
 Cascading Style Sheets
 
 css spec
+
+[前端开发中文文档导航](http://cndevdocs.com/)
+
+color可以继承
