@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>个人简历</title>
+    <title>resume</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 
@@ -24,24 +24,28 @@
             </ul>
         </nav>
     </div>
-    <div class="banner"></div>
+    <div class="banner"><div class="mask"></div></div>
     <main>
-        <div class="card">
-            <div class="pictrueAndText">
+        <div class="userCard">
+            <div class="pictrueAndText clearfix">
                 <div class="picture">
-                    <img src="" alt="">
+                    <img width="299" height="347" src="./img/startuper-1-299x347.jpg" alt="avatar">
                 </div>
                 <div class="text">
                     <div class="profile">
-                        <span class="welcome">Hello</span>
+                        <span class="welcome">Hello<span class="triangle"></span></span>
                         <h1>卢方</h1>
                         <p>前端开发工程师</p>
                         <hr>
-                        <dl>
+                        <dl class="clearfix">
+                            <dt>性别</dt>
+                            <dd>男</dd>
                             <dt>年龄</dt>
                             <dd>30</dd>
                             <dt>所在城市</dt>
                             <dd>北京</dd>
+                            <dt>邮箱</dt>
+                            <dd>ABC@abc.com</dd>
                             <dt>手机</dt>
                             <dd>12345678900</dd>
                         </dl>
@@ -49,13 +53,12 @@
                 </div>
             </div>
             <footer class="media">
-                <a href=""><img src="" alt=""></a>
-                <a href=""><img src="" alt=""></a>
-                <a href=""><img src="" alt=""></a>
-                <a href=""><img src="" alt=""></a>
-                <a href=""><img src="" alt=""></a>
-                <a href=""><img src="" alt=""></a>
-                <a href=""><img src="" alt=""></a>
+                <a href=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-twitter"></use></svg></a>
+                <a href=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-facebook"></use></svg></a>
+                <a href=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-linked"></use></svg></a>
+                <a href=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-ins"></use></svg></a>
+                <a href=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-dribbble"></use></svg></a>
+                <a href=""><svg class="icon" aria-hidden="true"><use xlink:href="#icon-555"></use></svg></a>
             </footer>
         </div>
         <a href="" class="button">下载PDF</a>
@@ -88,5 +91,5 @@
         </div>
     </section>
 </body>
-
+<script src="//at.alicdn.com/t/font_868515_gskwi7qv02q.js"></script>
 </html>
