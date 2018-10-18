@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url("./wallhaven-702440.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+a{
+    text-decoration: none;
+}
+.row{
+    margin: 20px;
+}
+.row .key{
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+    border: 1px solid #373737;
+    color: #c5c5c5;
+    border-radius: 6px;
+    box-shadow: 0 0 0px 1px #1a1b1c, 0 0 0px 2px #1f2020, 0 0 2px 1px #080808;
+    font-size: 16px;
+    font-family: Helvetica;
+    display: inline-block;
+    margin: 0 10px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+kbd>button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    width: 28px;
+    border: none;
+    display: none;
+}
+kbd:hover > button{
+    display: inline-block;
+}
+main{
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper > div:nth-child(2){
+    margin-left: -22px;
+}
+.wrapper > div:nth-child(3){
+    margin-left: -80px;
+}
+.wrapper{
+    display: inline-block;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+}
+.key img{
+    width: 16px;
+    height: 16x;
+    position: absolute;
+    left: 4px;
+    bottom: 2px;
+}
+.key .text{
+    position: absolute;
+    left: 4px;
+    top: 2px;
+}

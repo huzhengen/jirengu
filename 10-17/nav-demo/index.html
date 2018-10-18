@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header></header>
+    <main>
+       <div class="wrapper" id="mainWrapper"></div>
+    </main>
+    <footer></footer>
+
+    <script>
+        // 初始化数据
+        var keys = {
+            '0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:10},
+            '1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:9},
+            '2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:7},
+            'length': 3
+        }
+        var hash = {
+            'q': 'www.qq.com',
+            'w': 'weibo.com',
+            'e': 'ele.me',
+            'r': 'ruanyifeng.com',
+            't': 'tencent.com',
+            'u': 'uc.com',
+            'a': 'acfun.tv',
+            'b': 'bilibili.com',
+            'c': 'cctv.com',
+            'i': 'iqiyi.com',
+            'o': 'opera.com',
+            'z': 'zhihu.com',
+            'm': 'www.mcdonalds.com.cn'
+        }
+        var hashInLocalStorage = JSON.parse(localStorage.getItem('localHash') || 'null');
+        if(hashInLocalStorage) hash = hashInLocalStorage;
+        
+        // 生成键盘
+        var index = 0;
+        while(index < keys['length']){
+            div1 = document.createElement('div');
+            div1.className = 'row';
+            var row = keys[index];
+            var index2 = 0
+            while(index2 < row['length']){
+                var kbd1 = document.createElement('kbd');
+                var span = document.createElement('span');
+                span.textContent = row[index2];
+                span.className = 'text';
+                kbd1.appendChild(span);
+                kbd1.className = 'key';
+                var button1 = document.createElement('button');
+                button1.textContent = '编辑';
+                button1.id = row[index2]
+                var img = document.createElement('img');
+                if(hash[row[index2]]){
+                    img.src = '//' + hash[row[index2]] + '/favicon.ico';
+                }else{
+                    img.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png';
+                }
+                img.onerror = function(e){
+                    e.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png';
+                }
+                button1.onclick = function(e){
+                    var button2 = e['target'];
+                    var img2 = button2.previousSibling;
+                    var key = button2['id'];
+                    var url = prompt('请输入网址，不加http：');
+                    hash[key] = url;
+                    img2.src = '//' + url + '/favicon.ico';
+                    img2.onerror = function(e){
+                        e.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png';
+                    }
+                    localStorage.setItem('localHash', JSON.stringify(hash));
+                }
+                kbd1.appendChild(img);
+                kbd1.appendChild(button1);
+                div1.appendChild(kbd1);
+                index2 = index2 + 1;
+            }
+            mainWrapper.appendChild(div1);
+            index = index + 1;
+        }
+
+        // 监听键盘
+        document.onkeypress = function(e){
+            var key = e['key'];
+            var website = hash[key];
+            // location.href = 'http://' + website;
+            window.open('http://' + website, '_blank');
+        }
+    </script>
+</body>
+</html>
