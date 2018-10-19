@@ -5,13 +5,24 @@ var eraserEnabled = false;
 
 setCanvasSize(canvas);
 listenToUser(canvas);
-eraser.onclick = function() {
+// eraser.onclick = function() {
+//     eraserEnabled = true;
+//     actions.className = 'actions brushActive'
+// }
+// brush.onclick = function() {
+//     eraserEnabled = false;
+//     actions.className = 'actions'
+// }
+eraser.onclick = function(){
     eraserEnabled = true;
-    actions.className = 'actions brushActive'
+    eraser.classList.add('active');
+    pen.classList.remove('active');
 }
-brush.onclick = function() {
+pen.onclick = function(){
     eraserEnabled = false;
-    actions.className = 'actions'
+    pen.classList.add('active');
+    eraser.classList.remove('active');
+
 }
 
 function drawCircle(x, y, radius) {
