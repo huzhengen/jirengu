@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #ccc;
+    height: 100vh;
+}
+
+#canvas {
+    background: #fff;
+    display: block;
+}
+
+.actions {
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.actions>#brush {
+    display: none;
+}
+
+.actions.brushActive>#brush {
+    display: block;
+}
+
+.actions.brushActive>#eraser {
+    display: none;
+}
