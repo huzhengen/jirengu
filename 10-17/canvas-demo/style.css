@@ -3,14 +3,21 @@ body {
     padding: 0;
     background: #ccc;
     height: 100vh;
+    overflow: hidden;
 }
-.icon{
+ul,ol,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.icon {
     width: 1em;
     height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
 }
+
 #canvas {
     background: #fff;
     display: block;
@@ -22,16 +29,19 @@ body {
     top: 0;
     padding: 30px 0 0 10px;
 }
-.actions svg{
+
+.actions svg {
     width: 1.5em;
     height: 1.5em;
     transition: all 0.3s;
     margin: 0 10px;
 }
-.actions svg.active{
+
+.actions svg.active {
     color: red;
     transform: scale(2);
 }
+
 .actions>#brush {
     display: none;
 }
@@ -42,4 +52,32 @@ body {
 
 .actions.brushActive>#eraser {
     display: none;
+}
+
+.colors{
+    position: fixed;
+    top: 80px;
+    left: 28px;
+}
+
+.colors>li{
+    width: 25px;
+    height: 25px;
+    margin: 10px 0;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+.colors>li.active{
+    box-shadow: 0 0 10px rgba(0,0,0,0.95);
+    transform: scale(1.2);
+    margin: 15px 0;
+}
+.colors>li.red{
+    background-color: red;
+}
+.colors>li.green{
+    background-color: green;
+}
+.colors>li.blue{
+    background-color: blue;
 }
