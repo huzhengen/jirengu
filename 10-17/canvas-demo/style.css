@@ -41,7 +41,7 @@ ul,ol,li{
 }
 
 .actions svg.active {
-    color: red;
+    fill: red;
     transform: scale(2);
 }
 

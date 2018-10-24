@@ -25,6 +25,7 @@ pen.onclick = function() {
     eraser.classList.remove('active');
 }
 clear.onclick = function(){
+    console.log('清空');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 save.onclick = function(){

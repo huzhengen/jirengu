@@ -10,6 +10,8 @@ https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API Canvas自学
 
 NaN不等于任何值，包括它本身。NaN在布尔运算时被当作false。
 
+parseInt()、parseFloat()
+
 * createElement
 * appendChild
 * textContent
