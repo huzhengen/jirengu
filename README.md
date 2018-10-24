@@ -13,3 +13,5 @@
 [2018-10-15](https://github.com/huzhengen/jirengu/tree/master/10-15)
 
 [2018-10-17](https://github.com/huzhengen/jirengu/tree/master/10-17)
+
+[2018-10-24](https://github.com/huzhengen/jirengu/tree/master/10-24)
