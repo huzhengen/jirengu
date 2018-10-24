@@ -2,6 +2,7 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 var using = false;
 var eraserEnabled = false;
+var lineWidth = 5;
 
 setCanvasSize(canvas);
 listenToUser(canvas);
@@ -23,13 +24,34 @@ pen.onclick = function() {
     pen.classList.add('active');
     eraser.classList.remove('active');
 }
+clear.onclick = function(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+save.onclick = function(){
+    var url = canvas.toDataURL('image/png');
+    var a = document.createElement('a');
+    document.body.appendChild(a);
+    a.href= url;
+    a.download = '我的canvas画图';
+    a.target = '_blank';
+    a.click();
+}
 
+black.onclick = function(){
+    ctx.fillStyle = 'black'
+    ctx.strokeStyle = 'black';
+    black.classList.add('active');
+    red.classList.remove('active');
+    green.classList.remove('active');
+    blue.classList.remove('active');
+}
 red.onclick = function(){
     ctx.fillStyle = 'red'
     ctx.strokeStyle = 'red';
     red.classList.add('active');
     green.classList.remove('active');
     blue.classList.remove('active');
+    black.classList.remove('active');
 }
 green.onclick = function(){
     ctx.fillStyle = 'green'
@@ -37,6 +59,7 @@ green.onclick = function(){
     green.classList.add('active');
     red.classList.remove('active');
     blue.classList.remove('active');
+    black.classList.remove('active');
 }
 blue.onclick = function(){
     ctx.fillStyle = 'blue'
@@ -44,6 +67,13 @@ blue.onclick = function(){
     blue.classList.add('active');
     green.classList.remove('active');
     red.classList.remove('active');
+    black.classList.remove('active');
+}
+thin.onclick = function(){
+    lineWidth = 5
+}
+thick.onclick = function(){
+    lineWidth = 10
 }
 
 function drawCircle(x, y, radius) {
@@ -57,7 +87,7 @@ function drawLine(x1, y1, x2, y2) {
     ctx.beginPath();
     // ctx.strokeStyle = 'black';
     ctx.moveTo(x1, y1);
-    ctx.lineWidth = 5;
+    ctx.lineWidth = lineWidth;
     ctx.lineTo(x2, y2);
     ctx.stroke();
     ctx.closePath();
@@ -75,6 +105,8 @@ function getWidthHeight(canvas) {
     var pageHeight = document.documentElement.clientHeight;
     canvas.width = pageWidth;
     canvas.height = pageHeight;
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, pageWidth, pageHeight);
 }
 
 function listenToUser(canvas) {

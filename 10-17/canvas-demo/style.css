@@ -21,6 +21,9 @@ ul,ol,li{
 #canvas {
     background: #fff;
     display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
 
 .actions {
@@ -34,7 +37,7 @@ ul,ol,li{
     width: 1.5em;
     height: 1.5em;
     transition: all 0.3s;
-    margin: 0 10px;
+    margin: 0 20px;
 }
 
 .actions svg.active {
@@ -72,6 +75,9 @@ ul,ol,li{
     transform: scale(1.2);
     margin: 15px 0;
 }
+.colors>li.black{
+    background-color: black;
+}
 .colors>li.red{
     background-color: red;
 }
@@ -80,4 +86,23 @@ ul,ol,li{
 }
 .colors>li.blue{
     background-color: blue;
+}
+.sizes{
+    position: fixed;
+    top: 80px;
+    right: 28px;
+}
+.sizes>li{
+    margin: 20px 0;
+    /* transform: rotate(135deg) */
+}
+.sizes>.thin{
+    height: 0;
+    width: 20px;
+    border-top: 5px solid black
+}
+.sizes>.thick{
+    height: 0;
+    width: 20px;
+    border-top: 10px solid black
 }
