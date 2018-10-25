@@ -134,3 +134,77 @@ console.log(a.name) // jim
 [前端基础进阶：详细图解 JavaScript 内存空间](https://juejin.im/entry/589c29a9b123db16a3c18adf)
 
 [JavaScript中的浅拷贝和深拷贝](https://segmentfault.com/a/1190000008637489)
+
+### 面向对象
+
+全局对象为`global`
+
+浏览器里的全局对象是`window`
+
+```js
+global.parseInt
+global.parseFloat
+global.Number
+global.String
+global.Boolean
+global.Object
+```
+
+```js
+window.alert
+window.prompt
+window.comfirm
+window.console.log
+window.console.dir
+window.document
+window.document.createElement
+window.document.getElementById
+```
+
+7种类型，5个falsy，内存图
+
+### 原型
+
+```js
+var n = new Number(123)
+var s = new String('abc')
+var b = new Boolean(true)
+var o = new Object()
+```
+
+```js
+var o = new Object()
+o.name = 'oliva'
+o.age = 22
+console.log(o)
+// {name: "oliva", age: 22}
+//     age: 22
+//     name: "oliva"
+//         __proto__: Object
+```
+
+o被叫做实例，name和age是自己的属性，实例有一个__proto__，指向所有对象共用的属性。
+
+当你写o.toString()的时候，要找toString方法，在自己身上没有找到的话，就去__proto__里找toString()，也就是去对象的共用属性里去找。
+
+Object的共用属性，即Object的原型，就是Object的prototype，这个就叫原型
+
+```js
+o.__proto__ === Object.prototype // true
+n.__proto__ === Number.prototype
+```
+
+此时，n.`__proto__`.`__proto__`就是Number.prototype.`__proto__`，指向的是Object.prototype
+
+```js
+n.__proto__.__proto__ === Object.prototype
+```
+
+最顶端就是Object，Object的__proto__没有指向了，是null
+
+```js
+s.__proto__ === String.prototype
+s.__proto__.__proto__ === Object.prototype
+b.__proto__ === Boolean.prototype
+b.__proto__.__proto__ === Object.prototype
+```
