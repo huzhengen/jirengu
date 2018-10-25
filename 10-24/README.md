@@ -16,23 +16,37 @@ JS的数据类型不包括：array、function，这俩都属于object
 
 复杂类型：object。复杂类型是由简单类型组成的。
 
-* number：十进制（11）、二进制（0b11）、八进制（011）、十六进制（0x11）
+* number：
+    
+    十进制（11）、二进制（0b11）、八进制（011）、十六进制（0x11）
 
-* string：'nihao'、"nihao"、''、' '、
+* string：
+    'nihao'、"nihao"、''、' '、
+
     转义符\
+
     多行字符串
 
-* boolean：true、false
+* boolean：
+    true、false
+
     &&、|| 与、或
 
-* null：一个值null
+* null：
+    一个值null
 
-* undefined：一个值undefined
+* undefined：
+    一个值undefined
+
     * null和undefined的区别：
+
         1、如果一个变量没有赋值，它就是undefined
+
         2、如果有一个对象object，现在还不想赋值，推荐给它null；如果是非对象，推荐初始化值为undefined。（惯例）
 
-* object：对象，哈希表
+* object：
+    对象，哈希表
+
     ```js
     var person = {
         name: 'frank', // 对象的所有键名都是字符串（ES6 又引入了 Symbol 值也可以作为键名），所以加不加引号都可以。如果键名是数值，会被自动转为字符串。
@@ -49,3 +63,74 @@ JS的数据类型不包括：array、function，这俩都属于object
 typeof null   // 'object'
 
 typeof fn   // 'function'
+
+### 类型转换
+
+#### 转成字符串
+
+toString()或者与空字符串''相加或者用全局函数window.String()
+
+* number->string: n.toString() // 1 + ''
+* boolean->string: b.toString() // true + ''
+* null->string: 报错 // Cannot read property 'toString' of null // null + ''
+* undefined->string: 报错 // Cannot read property 'toString' of undefined // undefined + ''
+* obj->string: o.toString()->[object Object] // obj + ''
+
+#### 转成布尔值
+
+Boolean()或者!!
+
+* number：除了0和NaN，其它都是true
+* string：除了空字符串''，其它都是true
+* null：false
+* undefined：false
+* object：全都是true，数组和函数都是true
+
+总共有5个falsy值：0、NaN、''、null、undefined；其它全都是true。
+
+#### 转成数字
+
+Number()或者parseInt()或者parseFloat()或者'1'-0或者+'1'
+
+### 内存图
+
+数字是64位的，字符是16位的
+
+Stack栈内存
+
+Heap堆内存
+
+简单数据类型直接存到Stack里，复杂数据类型（object）存Heap地址到Stack里（数据放到Heap里，Stack里只放一个地址）。
+
+### GC 垃圾回收
+
+如果一个对象没有被引用，他就是垃圾，将被回收（还给浏览器/操作系统）。
+
+内存泄漏：由于浏览器的一些bug，使得该被标记为垃圾的东西没有被标记为垃圾，内存就会被永久的占用着。
+
+### 深拷贝 vs 浅拷贝
+
+浅拷贝：b复制了a的值之后，b的变化会导致a的变化，就是浅拷贝。
+
+```js
+var a = {name: 'tom'}
+var b = a
+b.name = 'jim'
+console.log(a.name) // jim
+```
+
+深拷贝：深拷贝也就是拷贝出一个新的实例，新的实例和之前的实例互不影响。
+
+### others
+
+[javascript 连等赋值问题](https://segmentfault.com/q/1010000002637728)
+
+`.` 运算优先于 `=` 赋值运算，先算`.`再算`=`
+
+赋值运算从右往左
+
+[前端面试](https://leohxj.gitbooks.io/front-end-database/interview/)
+
+[前端基础进阶：详细图解 JavaScript 内存空间](https://juejin.im/entry/589c29a9b123db16a3c18adf)
+
+[JavaScript中的浅拷贝和深拷贝](https://segmentfault.com/a/1190000008637489)
