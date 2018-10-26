@@ -183,11 +183,15 @@ console.log(o)
 //         __proto__: Object
 ```
 
-o被叫做实例，name和age是自己的属性，实例有一个__proto__，指向所有对象共用的属性。
+o可以被叫做实例对象，name和age是自己的属性，实例对象有一个`__proto__`，指向所有对象共用的属性。
 
-当你写o.toString()的时候，要找toString方法，在自己身上没有找到的话，就去__proto__里找toString()，也就是去对象的共用属性里去找。
+当你写o.toString()的时候，要找toString方法，在自己身上没有找到的话，就去`__proto__`里找toString()，也就是去对象的共用属性里去找。
 
 Object的共用属性，即Object的原型，就是Object的prototype，这个就叫原型
+
+```
+prototype n.原型，雏形，蓝本；
+```
 
 ```js
 o.__proto__ === Object.prototype // true
@@ -200,7 +204,7 @@ n.__proto__ === Number.prototype
 n.__proto__.__proto__ === Object.prototype
 ```
 
-最顶端就是Object，Object的__proto__没有指向了，是null
+<del>最顶端就是Object，Object的__proto__没有指向了，是null</del>
 
 ```js
 s.__proto__ === String.prototype
@@ -208,3 +212,27 @@ s.__proto__.__proto__ === Object.prototype
 b.__proto__ === Boolean.prototype
 b.__proto__.__proto__ === Object.prototype
 ```
+
+String.prototype是String的共用属性的引用
+
+`s.__proto__`是String的共用属性的引用
+
+### 原型链
+
+```js
+var s = new String('abc')
+var 对象 = new 函数()
+对象.__proto__ === 函数.prototype 他俩都指向同一个对象，地址是相同的
+对象是由谁构造出来的，谁就是构造函数
+__proto__是对象的属性，prototype是函数的属性
+
+函数.prototype.__proto__ === Object.prototype
+
+函数.__proto__ === Function.prototype
+
+Function.__proto__ === Function.prototype
+
+Function.prototype.__proto__ === Object.prototype
+```
+
+面向对象编程很重要的一个方面，就是对象的继承。A 对象通过继承 B 对象，就能直接拥有 B 对象的所有属性和方法。这对于代码的复用是非常有用的。
