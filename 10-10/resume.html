@@ -10,15 +10,17 @@
 </head>
 
 <body>
-    <div class="site-welcome active" id="siteWelcome"><div class="loading"></div></div>
+    <div class="site-welcome active" id="siteWelcome">
+        <div class="loading"></div>
+    </div>
     <div class="topNavBar clearfix" id="topNavBar">
         <a href="" class="logo" alt="logo"><span class="rs">RS</span><span class="card">card</span></a>
         <nav>
             <ul class="clearfix">
-                <li><a href="">关于我</a></li>
-                <li><a href="">我的技能</a></li>
+                <li><a href="#siteAbout">关于我</a></li>
+                <li><a href="#siteSkills">我的技能</a></li>
                 <li class="menuTigger">
-                    <a href="">我的作品</a>
+                    <a href="#siteWorks">我的作品</a>
                     <ul class="submenu">
                         <li><a href="javascript:;">作品1</a></li>
                         <li><a href="javascript:;">作品22</a></li>
@@ -39,9 +41,11 @@
             </ul>
         </nav>
     </div>
-    <div class="banner"><div class="mask"></div></div>
+    <div class="banner">
+        <div class="mask"></div>
+    </div>
     <main>
-        <div class="userCard">
+        <div class="userCard" id="siteAbout">
             <div class="pictrueAndText clearfix">
                 <div class="picture">
                     <img width="299" height="347" src="./img/startuper-1-299x347.jpg" alt="avatar">
@@ -79,18 +83,48 @@
         <p class="downloadResumeWrapper"><a href="./resume.pdf" target="_blank" download class="downloadResume">下载 PDF 简历</a></p>
         <p class="selfIntroduction">前端开发工程师。<br>技能：前端、HTML5、CSS3、JavaScript、jQuery、React、Vue。</p>
     </main>
-    <section class="skills">
+    <section class="skills" id="siteSkills">
         <h2>技能</h2>
         <ol class="clearfix">
-            <li><h3>HTML 5 &amp; CSS3</h3><div class="progressBar"><div class="progress"></div></div></li>
-            <li><h3>JavaScript</h3><div class="progressBar"><div class="progress"></div></div></li>
-            <li><h3>jQuery</h3><div class="progressBar"><div class="progress"></div></div></li>
-            <li><h3>React.js</h3><div class="progressBar"><div class="progress"></div></div></li>
-            <li><h3>Vue.js</h3><div class="progressBar"><div class="progress"></div></div></li>
-            <li><h3>Node.js</h3><div class="progressBar"><div class="progress"></div></div></li>
+            <li>
+                <h3>HTML 5 &amp; CSS3</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>JavaScript</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>jQuery</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>React.js</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Vue.js</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
+            <li>
+                <h3>Node.js</h3>
+                <div class="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section class="portfolio" id="siteWorks">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -98,7 +132,9 @@
                 <li id="portfolioFramework">框架</li>
                 <li id="portfolioVallina">原生JS&amp;CSS</li>
             </ol>
-            <div id="portfolioBar" class="bar state-1"><div class="bar-inner"></div></div>
+            <div id="portfolioBar" class="bar state-1">
+                <div class="bar-inner"></div>
+            </div>
         </nav>
         <div class="works">
             <div class="big"><img src="./img/portfolio1.jpg" alt=""></div>
@@ -109,37 +145,52 @@
 </body>
 <script src="//at.alicdn.com/t/font_868515_gskwi7qv02q.js"></script>
 <script>
-portfolioAll.onclick = function(){
-    portfolioBar.className = 'bar state-1'
-}
-portfolioFramework.onclick = function(){
-    portfolioBar.className = 'bar state-2'
-}
-portfolioVallina.onclick = function(){
-    portfolioBar.className = 'bar state-3'
-}
-siteWelcome.classList.remove('active');
-
-window.onscroll = function(e){
-    if(window.scrollY>0){
-        topNavBar.classList.add('sticky');
-    }else{
-        topNavBar.classList.remove('sticky');
+    portfolioAll.onclick = function() {
+        portfolioBar.className = 'bar state-1'
     }
-}
-// let liTags = document.getElementsByClassName('menuTigger');
-// for(let i=0; i<liTags.length; i++){
-//     liTags[i].onmouseenter = function(e){
-//         let li = e.currentTarget;
-//         let brother = li.getElementsByTagName('ul')[0]
-//         brother.classList.add('active');
-//     }
-//     liTags[i].onmouseleave = function(e){
-//         console.log(1)
-//         let li = e.currentTarget;
-//         let brother = li.getElementsByTagName('ul')[0]
-//         brother.classList.remove('active');
-//     }
-// }
+    portfolioFramework.onclick = function() {
+        portfolioBar.className = 'bar state-2'
+    }
+    portfolioVallina.onclick = function() {
+        portfolioBar.className = 'bar state-3'
+    }
+    siteWelcome.classList.remove('active');
+
+    window.onscroll = function(e) {
+        if (window.scrollY > 0) {
+            topNavBar.classList.add('sticky');
+        } else {
+            topNavBar.classList.remove('sticky');
+        }
+    }
+
+    let aTags = document.querySelectorAll('nav>ul>li>a');
+    for (let i = 0; i < aTags.length; i++) {
+        aTags[i].onclick = function(e) {
+            e.preventDefault(); // 阻止默认动作
+            let a = e.currentTarget;
+            let href = a.getAttribute('href');
+            let element = document.querySelector(href);
+            // debugger;
+            let top = element.offsetTop - 60;
+            window.scrollTo(0, top);
+        }
+    }
+</script>
+<script>
+    // let liTags = document.getElementsByClassName('menuTigger');
+    // for(let i=0; i<liTags.length; i++){
+    //     liTags[i].onmouseenter = function(e){
+    //         let li = e.currentTarget;
+    //         let brother = li.getElementsByTagName('ul')[0]
+    //         brother.classList.add('active');
+    //     }
+    //     liTags[i].onmouseleave = function(e){
+    //         console.log(1)
+    //         let li = e.currentTarget;
+    //         let brother = li.getElementsByTagName('ul')[0]
+    //         brother.classList.remove('active');
+    //     }
+    // }
 </script>
 </html>

@@ -2,6 +2,7 @@ body {
     background-color: #efefef;
     color: #000;
     margin: 0;
+    height: 2500px;
 }
 
 .icon {
@@ -218,14 +219,16 @@ hr {
     animation: submenuSlide .3s linear;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 }
-@keyframes submenuSlide{
-    0%{
-        transform:translateX(-40%);
+
+@keyframes submenuSlide {
+    0% {
+        transform: translateX(-40%);
     }
-    100%{
-        transform:translateX(0);
+    100% {
+        transform: translateX(0);
     }
 }
+
 .topNavBar .submenu>li {
     white-space: nowrap;
     padding: 6px 10px 6px 25px;
