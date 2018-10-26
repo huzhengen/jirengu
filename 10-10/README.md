@@ -1,5 +1,7 @@
 # HTML CSS
 
+简历预览：https://huzhengen.github.io/jirengu/10-10/resume.html
+
 html spec
 
 http-server -c-1
