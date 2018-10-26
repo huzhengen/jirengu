@@ -60,6 +60,60 @@ hr {
     display: block;
     clear: both;
 }
+.loading {
+    width: 200px;
+    height: 200px;
+    position: relative;
+}
+
+.loading::before,
+.loading::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background: #000;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    animation: loading 1.5s linear infinite;
+}
+
+.loading::after {
+    animation-delay: 0.75s;
+}
+
+@keyframes loading {
+    0% {
+        width: 1px;
+        height: 1px;
+        opacity: 1;
+    }
+    100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+    }
+}
+.site-welcome{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ccc;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-welcome.active{
+    display: flex;
+}
 
 .logo {
     float: left;
@@ -254,12 +308,14 @@ body>main .downloadResume:hover {
     line-height: 27px;
 }
 
-section.skills, section.portfolio {
+section.skills,
+section.portfolio {
     max-width: 940px;
     margin: 30px auto 0;
 }
 
-section.skills>h2, section.portfolio>h2 {
+section.skills>h2,
+section.portfolio>h2 {
     text-align: center;
     color: #3d4451;
     font-size: 34px;
@@ -280,9 +336,11 @@ section.skills>ol>li {
     box-sizing: border-box;
     padding-right: 40px;
 }
-section.skills>ol>li:nth-child(even){
+
+section.skills>ol>li:nth-child(even) {
     padding-right: 0;
 }
+
 section.skills h3 {
     font-size: 14px;
     line-height: 1.1;
@@ -300,85 +358,108 @@ section.skills .progressBar>.progress {
     background-color: #e6686a;
     border-radius: 6px;
 }
-section.skills ol li:nth-child(1) .progressBar>.progress{
+
+section.skills ol li:nth-child(1) .progressBar>.progress {
     width: 60%;
 }
-section.skills ol li:nth-child(2) .progressBar>.progress{
+
+section.skills ol li:nth-child(2) .progressBar>.progress {
     width: 50%;
 }
-section.skills ol li:nth-child(3) .progressBar>.progress{
+
+section.skills ol li:nth-child(3) .progressBar>.progress {
     width: 40%;
 }
-section.skills ol li:nth-child(4) .progressBar>.progress{
+
+section.skills ol li:nth-child(4) .progressBar>.progress {
     width: 30%;
 }
-section.skills ol li:nth-child(5) .progressBar>.progress{
+
+section.skills ol li:nth-child(5) .progressBar>.progress {
     width: 20%;
 }
-section.skills ol li:nth-child(6) .progressBar>.progress{
+
+section.skills ol li:nth-child(6) .progressBar>.progress {
     width: 10%;
 }
-section.portfolio{
+
+section.portfolio {
     text-align: center;
 }
-section.portfolio > nav{
+
+section.portfolio>nav {
     display: inline-block;
     vertical-align: top;
     margin-top: 30px;
 }
-section.portfolio ol{
+
+section.portfolio ol {
     vertical-align: top;
     display: inline-block;
 }
-section.portfolio ol li{
+
+section.portfolio ol li {
     float: left;
     margin-left: 40px;
     cursor: pointer;
 }
-section.portfolio ol li:first-child{
+
+section.portfolio ol li:first-child {
     margin-left: 0;
 }
-section.portfolio > nav .bar{
+
+section.portfolio>nav .bar {
     background-color: #fff;
     height: 5px;
     border-radius: 5px;
     margin-top: 5px;
 }
-section.portfolio > nav .bar .bar-inner{
+
+section.portfolio>nav .bar .bar-inner {
     background-color: #e6686a;
     height: 100%;
     transition: all 0.3s;
     border-radius: 5px;
 }
-section.portfolio > nav .bar.state-1 .bar-inner{
+
+section.portfolio>nav .bar.state-1 .bar-inner {
     margin-left: 0;
     width: 32px;
 }
-section.portfolio > nav .bar.state-2 .bar-inner{
+
+section.portfolio>nav .bar.state-2 .bar-inner {
     margin-left: 62px;
     width: 50px;
 }
-section.portfolio > nav .bar.state-3 .bar-inner{
+
+section.portfolio>nav .bar.state-3 .bar-inner {
     margin-left: 146px;
     width: 90px;
 }
-section.portfolio .works{
+
+section.portfolio .works {
     position: relative;
     height: 597px;
     margin-top: 30px;
 }
-section.portfolio .works .big, section.portfolio .works .small{
+
+section.portfolio .works .big,
+section.portfolio .works .small {
     position: absolute;
 }
-section.portfolio .works .big{
+
+section.portfolio .works .big {
     left: 0;
     top: 0;
 }
-section.portfolio .works .small1{
+
+section.portfolio .works .small1 {
     right: 0;
     top: 0;
 }
-section.portfolio .works .small2{
+
+section.portfolio .works .small2 {
     right: 0;
     bottom: 0;
 }
+
