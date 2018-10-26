@@ -126,6 +126,13 @@ hr {
     position: fixed;
     left: 0;
     top: 0;
+    transition: all 0.5s;
+}
+.topNavBar.sticky{
+    background-color: #fff;
+    padding: 10px 16px;
+    z-index: 1;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.25)
 }
 
 .topNavBar .logo {
@@ -167,10 +174,15 @@ hr {
     padding: 5px 0;
     display: block;
 }
+.topNavBar.sticky>nav>ul>li>a {
+    color: #3d4451;
+}
 
 .topNavBar>nav>ul>li>a:hover {
     border-bottom: 3px solid #e06567;
 }
+
+
 
 .banner {
     height: 515px;
