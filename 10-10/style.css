@@ -60,6 +60,7 @@ hr {
     display: block;
     clear: both;
 }
+
 .loading {
     width: 200px;
     height: 200px;
@@ -98,7 +99,8 @@ hr {
         opacity: 0;
     }
 }
-.site-welcome{
+
+.site-welcome {
     display: none;
     position: fixed;
     top: 0;
@@ -111,7 +113,7 @@ hr {
     align-items: center;
 }
 
-.site-welcome.active{
+.site-welcome.active {
     display: flex;
 }
 
@@ -128,7 +130,8 @@ hr {
     top: 0;
     transition: all 0.5s;
 }
-.topNavBar.sticky{
+
+.topNavBar.sticky {
     background-color: #fff;
     padding: 10px 16px;
     z-index: 1;
@@ -163,26 +166,79 @@ hr {
 .topNavBar>nav>ul>li {
     float: left;
     margin: 0 17px;
+    position: relative;
 }
 
 .topNavBar>nav>ul>li>a {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
     font-weight: bold;
-    border-bottom: 3px solid transparent;
-    border-bottom: 3px solid transparent;
     padding: 5px 0;
     display: block;
+    position: relative;
 }
+
 .topNavBar.sticky>nav>ul>li>a {
     color: #3d4451;
 }
 
-.topNavBar>nav>ul>li>a:hover {
-    border-bottom: 3px solid #e06567;
+.topNavBar>nav>ul>li:hover .submenu {
+    display: block;
 }
 
+.topNavBar>nav>ul>li:hover>a::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #e06567;
+    height: 3px;
+    overflow: hidden;
+    animation: menuSlide 0.3s linear;
+}
 
+@keyframes menuSlide {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+.topNavBar .submenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 112%;
+    background-color: #fff;
+    border-radius: 1px;
+    animation: submenuSlide .3s linear;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+}
+@keyframes submenuSlide{
+    0%{
+        transform:translateX(-40%);
+    }
+    100%{
+        transform:translateX(0);
+    }
+}
+.topNavBar .submenu>li {
+    white-space: nowrap;
+    padding: 6px 10px 6px 25px;
+    text-align: right;
+}
+
+.topNavBar .submenu>li>a {
+    color: #3d4451;
+}
+
+.topNavBar .submenu.active {
+    display: block;
+}
 
 .banner {
     height: 515px;
@@ -474,4 +530,3 @@ section.portfolio .works .small2 {
     right: 0;
     bottom: 0;
 }
-
