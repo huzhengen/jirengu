@@ -143,6 +143,7 @@
         </div>
     </section>
 </body>
+<script src="./Tween.min.js"></script>
 <script src="//at.alicdn.com/t/font_868515_gskwi7qv02q.js"></script>
 <script>
     portfolioAll.onclick = function() {
@@ -156,7 +157,11 @@
     }
     siteWelcome.classList.remove('active');
 
+    sticky()
     window.onscroll = function(e) {
+        sticky()
+    }
+    function sticky(){
         if (window.scrollY > 0) {
             topNavBar.classList.add('sticky');
         } else {
@@ -168,14 +173,33 @@
     for (let i = 0; i < aTags.length; i++) {
         aTags[i].onclick = function(e) {
             e.preventDefault(); // 阻止默认动作
-            let a = e.currentTarget;
-            let href = a.getAttribute('href');
-            let element = document.querySelector(href);
+            // let a = e.currentTarget;
+            // let href = a.getAttribute('href');
+            // let element = document.querySelector(href);
             // debugger;
-            let top = element.offsetTop - 60;
-            window.scrollTo(0, top);
+            // let top = element.offsetTop - 60;
+            let top = document.querySelector(e.currentTarget.getAttribute('href')).offsetTop;
+            let currentTop = window.scrollY;
+            let targetTop = top - 60
+            let s = targetTop - currentTop;
+            var t = Math.abs((s/100)*300)
+            if(t>500){t=500}
+            var coords = {y: currentTop}
+            var tween = new TWEEN.Tween(coords)
+                .to({y: targetTop}, t)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .onUpdate(function(){
+                    window.scrollTo(0, coords.y)
+                })
+                .start();
         }
     }
+    // 设置循环动画
+    function animate(time) {
+        requestAnimationFrame(animate);
+        TWEEN.update(time);
+    }
+    requestAnimationFrame(animate);
 </script>
 <script>
     // let liTags = document.getElementsByClassName('menuTigger');
