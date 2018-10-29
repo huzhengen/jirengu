@@ -17,9 +17,9 @@
         <a href="" class="logo" alt="logo"><span class="rs">RS</span><span class="card">card</span></a>
         <nav>
             <ul class="clearfix">
-                <li><a href="#siteAbout">关于我</a></li>
-                <li><a href="#siteSkills">我的技能</a></li>
-                <li class="menuTigger">
+                <li class="clickMenu"><a href="#siteAbout">关于我</a></li>
+                <li class="clickMenu"><a href="#siteSkills">我的技能</a></li>
+                <li class="clickMenu">
                     <a href="#siteWorks">我的作品</a>
                     <ul class="submenu">
                         <li><a href="javascript:;">作品1</a></li>
@@ -27,7 +27,7 @@
                         <li><a href="javascript:;">作品333</a></li>
                     </ul>
                 </li>
-                <li class="menuTigger">
+                <li>
                     <a href="">我的博客</a>
                     <ul class="submenu">
                         <li><a href="javascript:;">博客1</a></li>
@@ -45,7 +45,7 @@
         <div class="mask"></div>
     </div>
     <main>
-        <div class="userCard" id="siteAbout">
+        <div class="userCard" id="siteAbout" data-x>
             <div class="pictrueAndText clearfix">
                 <div class="picture">
                     <img width="299" height="347" src="./img/startuper-1-299x347.jpg" alt="avatar">
@@ -83,7 +83,7 @@
         <p class="downloadResumeWrapper"><a href="./resume.pdf" target="_blank" download class="downloadResume">下载 PDF 简历</a></p>
         <p class="selfIntroduction">前端开发工程师。<br>技能：前端、HTML5、CSS3、JavaScript、jQuery、React、Vue。</p>
     </main>
-    <section class="skills" id="siteSkills">
+    <section class="skills" id="siteSkills" data-x>
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -124,7 +124,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio" id="siteWorks">
+    <section class="portfolio" id="siteWorks" data-x>
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -157,38 +157,82 @@
     }
     siteWelcome.classList.remove('active');
 
+    let liTags = document.querySelectorAll('nav>ul>li');
+    for(let i=0; i<liTags.length; i++){
+        liTags[i].onmouseenter = function(e){
+            let li = e.currentTarget;
+            li.classList.add('active')
+        }
+        liTags[i].onmouseleave = function(e){
+            let li = e.currentTarget;
+            li.classList.remove('active')
+        }
+    }
+
+    let specialTags = document.querySelectorAll('[data-x]');
+    for (let i = 0; i < specialTags.length; i++) {
+        specialTags[i].classList.add('offset');
+    }
+
     sticky()
+    scrollToTarget()
     window.onscroll = function(e) {
         sticky()
+        scrollToTarget()
     }
-    function sticky(){
+
+    function sticky() {
         if (window.scrollY > 0) {
             topNavBar.classList.add('sticky');
         } else {
             topNavBar.classList.remove('sticky');
         }
     }
+    function scrollToTarget(){
+        let minIndex = 0
+        for (let i = 0; i < specialTags.length; i++) {
+            if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+                minIndex = i;
+            }
+        }
+        specialTags[minIndex].classList.remove('offset');
+        let id = specialTags[minIndex].id;
+        let a = document.querySelector('a[href="#' + id + '"]');
+        for(let i=0; i<liTags.length; i++){
+            liTags[i].classList.remove('highlight');
+        }
+        a.parentNode.classList.add('highlight')
+    }
 
-    let aTags = document.querySelectorAll('nav>ul>li>a');
+    
+
+    let aAllTags = document.querySelectorAll('nav>ul>li>a');
+    for (let i = 0; i < aAllTags.length; i++) {
+        aAllTags[i].onclick = function(e) {
+            e.preventDefault(); // 阻止默认动作
+        }
+    }
+
+    let aTags = document.querySelectorAll('.clickMenu>a');
     for (let i = 0; i < aTags.length; i++) {
         aTags[i].onclick = function(e) {
-            e.preventDefault(); // 阻止默认动作
-            // let a = e.currentTarget;
-            // let href = a.getAttribute('href');
-            // let element = document.querySelector(href);
-            // debugger;
-            // let top = element.offsetTop - 60;
             let top = document.querySelector(e.currentTarget.getAttribute('href')).offsetTop;
             let currentTop = window.scrollY;
             let targetTop = top - 60
             let s = targetTop - currentTop;
-            var t = Math.abs((s/100)*300)
-            if(t>500){t=500}
-            var coords = {y: currentTop}
-            var tween = new TWEEN.Tween(coords)
-                .to({y: targetTop}, t)
+            let t = Math.abs((s / 100) * 300)
+            if (t > 500) {
+                t = 500
+            }
+            let coords = {
+                y: currentTop
+            }
+            let tween = new TWEEN.Tween(coords)
+                .to({
+                    y: targetTop
+                }, t)
                 .easing(TWEEN.Easing.Quadratic.InOut)
-                .onUpdate(function(){
+                .onUpdate(function() {
                     window.scrollTo(0, coords.y)
                 })
                 .start();
@@ -201,20 +245,6 @@
     }
     requestAnimationFrame(animate);
 </script>
-<script>
-    // let liTags = document.getElementsByClassName('menuTigger');
-    // for(let i=0; i<liTags.length; i++){
-    //     liTags[i].onmouseenter = function(e){
-    //         let li = e.currentTarget;
-    //         let brother = li.getElementsByTagName('ul')[0]
-    //         brother.classList.add('active');
-    //     }
-    //     liTags[i].onmouseleave = function(e){
-    //         console.log(1)
-    //         let li = e.currentTarget;
-    //         let brother = li.getElementsByTagName('ul')[0]
-    //         brother.classList.remove('active');
-    //     }
-    // }
-</script>
+
+
 </html>
