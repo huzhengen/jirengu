@@ -19,3 +19,5 @@
 [2018-10-29 JS 数组 函数](https://github.com/huzhengen/jirengu/tree/master/10-29)
 
 [2018-10-30 DOM API](https://github.com/huzhengen/jirengu/tree/master/10-30)
+
+[2018-10-31 jQuery](https://github.com/huzhengen/jirengu/tree/master/10-31)
