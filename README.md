@@ -16,4 +16,6 @@
 
 [2018-10-24 JS基础 数据类型 类型转换 面向对象](https://github.com/huzhengen/jirengu/tree/master/10-24)
 
-[2018-10-29 JS数组 函数](https://github.com/huzhengen/jirengu/tree/master/10-29)
+[2018-10-29 JS 数组 函数](https://github.com/huzhengen/jirengu/tree/master/10-29)
+
+[2018-10-30 DOM API](https://github.com/huzhengen/jirengu/tree/master/10-30)
