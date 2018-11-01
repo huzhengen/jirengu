@@ -1,4 +1,4 @@
-# 饥人谷/写代码啦
+# jirengu/xiedaimala
 
 [2018-09-29 IDE](https://github.com/huzhengen/jirengu/tree/master/09-29)
 
