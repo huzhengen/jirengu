@@ -211,12 +211,36 @@ window.$ = function(nodeOrSelector){
         } )
     }
     nodes.getText = function(){
+        let texts = []
         for(let i = 0; i<nodes.length; i++){
-            nodes[i].classList.add(value)
+            texts.push(nodes[i].textContent)
+        }
+        return texts
+    }
+    nodes.setText = function(text){
+        for(let i=0; i<nodes.length; i++){
+            nodes[i].textContent = text
+        }
+    }
+    nodes.text = function(text){
+        if(text === undefined){
+            let texts = []
+            for(let i = 0; i<nodes.length; i++){
+                texts.push(nodes[i].textContent)
+            }
+            return texts
+        }else{
+            for(let i=0; i<nodes.length; i++){
+                nodes[i].textContent = text
+            }
         }
     }
 
     return nodes
 }
 $('li').addClass(['a', 'b', 'c']);
+$('li').getText();
+$('li').setText('hello');
+$('li').text();
+$('ul>li').text('hello');
 ```
