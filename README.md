@@ -20,4 +20,4 @@
 
 [2018-10-30 DOM API](https://github.com/huzhengen/jirengu/tree/master/10-30)
 
-[2018-10-31 jQuery](https://github.com/huzhengen/jirengu/tree/master/10-31)
+[2018-10-31 jQuery 轮播](https://github.com/huzhengen/jirengu/tree/master/10-31)

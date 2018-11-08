@@ -1,5 +1,11 @@
 # jQuery
 
+内容、样式、行为分离
+
+HTML、CSS、JS分离
+
+$div.show()
+
 ```html
 <ul>
     <li id="item1">1</li>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播</title>
+    <style>
+        .window {
+            width: 500px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .images {
+            display: flex;
+            align-items: flex-start;
+            transition: transform 0.5s;
+        }
+        
+        .images>img {
+            vertical-align: middle;
+        }
+        
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="images">
+            <img src="./71b2cbb3ly1fwrno91d0zj20qo140wjv.jpg" alt="">
+            <img src="./71b2cbb3ly1fwrnod6l5qj22lo3u6b2h.jpg" alt="">
+            <img src="./71b2cbb3ly1fwrnoef0gdj20qo15o44y.jpg" alt="">
+        </div>
+        <div>
+            <button id="p1">第一张</button>
+            <button id="p2">第二张</button>
+            <button id="p3">第三张</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var $button = $('button');
+        var buttonLength = $button.length;
+        var n = 0;
+
+        for (let i = 0; i < buttonLength; i++) {
+            $button.eq(i).on('click', function() {
+                let index = $(this).index();
+                $('.images').css({
+                    transform: 'translateX(' + (-index * 500) + 'px)'
+                })
+                n = index
+                activeButton($(this))
+            })
+        }
+
+        playSlide(n % buttonLength)
+
+        var timerId = setTimer()
+
+        $('.window').on('mouseenter', function() {
+            window.clearInterval(timerId);
+        })
+        $('.window').on('mouseleave', function() {
+            timerId = setTimer()
+        })
+
+        function activeButton($button) {
+            $button.addClass('red')
+                .siblings().removeClass('red')
+        }
+
+        function playSlide(index) {
+            $button.eq(index).trigger('click')
+            activeButton($button.eq(index))
+        }
+
+        function setTimer() {
+            return setInterval(() => {
+                n++
+                playSlide(n % buttonLength)
+            }, 1500)
+        }
+    </script>
+</body>
+
+</html>
