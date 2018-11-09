@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+.window {
+    width: 400px;
+    height: 533px;;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.images {
+    position: relative;
+    transition: all 0.5s;
+}
+
+.images>img{
+    position: absolute;
+}
+.images>img.current{
+    transition: all 0.5s;
+    transform: translateX(0);
+    z-index: 1;
+}
+.images>img.enter{
+    transition: all 0.5s;
+    transform: translateX(100%);
+}
+.images>img.leave{
+    transition: all 0.5s;
+    transform: translateX(-100%);
+    z-index: 1;
+}
