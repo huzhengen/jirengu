@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    text-align: center;
+}
+.container{
+    display: inline-block;
+}
+.window {
+    width: 400px;
+    height: 533px;;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.images {
+    display: flex;
+    transition: all 0.5s;
+}
+
+.images>img{
+    width: 100%;
+}
+
+.buttonWrapper{
+    margin: 10px auto;
+    text-align: center;
+}
+.buttons{
+    display:inline-block;
+}
