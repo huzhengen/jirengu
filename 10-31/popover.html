@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>popover</title>
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        button {
+            margin-bottom: 20px;
+        }
+        
+        .pic {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button>点击显示图片</button>
+        <img class="pic" src="./71b2cbb3ly1fwrnoef0gdj20qo15o44y.jpg" alt="">
+    </div>
+
+
+    <script src="./jquery3.3.1.min.js"></script>
+    <script>
+        let show = false
+        $('.container').on('click', function(e) {
+            e.stopPropagation()
+        })
+        $('button').on('click', function(e) {
+            if (show === false) {
+                $(this).html('点击隐藏图片')
+                $('.pic').show()
+                show = true
+            } else {
+                $(this).html('点击显示图片')
+                $('.pic').hide()
+                show = false
+            }
+            $(document).one('click', function() {
+                $('button').html('点击显示图片')
+                $('.pic').hide()
+                show = false
+            })
+        })
+    </script>
+</body>
+
+
+</html>
