@@ -79,3 +79,7 @@ child1.addEventListener('click', function fn1(){
 // 传第三个参数为true
 // 点击儿子，log顺序是“爷爷->父亲->儿子”
 ```
+
+```
+e.stopPropagation()
+```
