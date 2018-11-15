@@ -24,7 +24,6 @@
 
 ```html
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
 ```
 
 ### rem
@@ -32,6 +31,8 @@
 root em
 
 根元素html的font-size是16px，则1个rem就是16px
+
+1rem === html的font-size
 
 > vh，viewport height，视口高度
 
@@ -42,3 +43,11 @@ root em
 Chrome默认最小是12px
 
 > 1个em等于自己的font-size的值
+
+> 一切单位以宽度为标准，就能保证完美还原设计图
+
+```
+npm config set registry https://registry.npm.taobao.org/
+
+node-sass -wr scss -o css
+```
