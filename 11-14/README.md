@@ -51,3 +51,11 @@ npm config set registry https://registry.npm.taobao.org/
 
 node-sass -wr scss -o css
 ```
+
+```scss
+@function px2rem( $px ){
+	@return $px*320/$designWidth/20 + rem;
+}
+
+$designWidth : 750;
+```
