@@ -22,9 +22,10 @@ var server = http.createServer(function(request, response){
   console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
 
   if(path === '/'){
+    let string = fs.readFileSync('./index.html', 'utf8')
     response.statusCode = 200
     response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write('哈哈哈')
+    response.write(string)
     response.end()
   }else if(path === '/pay'){
     let amount = fs.readFileSync('./db', 'utf8')
