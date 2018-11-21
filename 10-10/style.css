@@ -2,7 +2,6 @@ body {
     background-color: #efefef;
     color: #000;
     margin: 0;
-    height: 2500px;
 }
 
 .icon {
@@ -544,8 +543,9 @@ section.portfolio>nav .bar.state-3 .bar-inner {
 
 section.portfolio .works {
     position: relative;
-    height: 597px;
-    margin-top: 30px;
+    width:888px;
+    height:666px;
+    margin: 30px auto 0;
 }
 
 section.portfolio .works .big,
