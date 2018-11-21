@@ -54,3 +54,37 @@ window.jQuery.ajax = function(options){
 
 window.$ = windwo.jQuery
 ```
+
+```js
+window.jQuery.ajax = function(options){
+    let url
+    if(arguments.length === 1){
+        url = options.url
+    }else if(arguments.length === 2]){
+        url = arguments[0]
+        options = arguments[1]
+    }
+    
+    // 解构赋值
+    let {method, body, successFn, failFn, headers} = options
+
+    let request = new XMLHttpRequest()
+    request.open(method, url)
+    for(let key in headers){
+        let value = headers[key]
+        request.setRequestHeader(key, value)
+    }
+    request.onreadystatechange = () => {
+        if(request.readyState === 4){
+            if(request.status >= 200 && request.status < 300){
+                successFn.call(undefined, request.responseText)
+            }else if(request.status >= 400){
+                failFn.call(undefined, request)
+            }
+        }
+    }
+    request.send(body)
+}
+
+window.$ = windwo.jQuery
+```
