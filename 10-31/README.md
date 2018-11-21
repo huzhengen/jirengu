@@ -1,5 +1,7 @@
 # jQuery
 
+苹果样式轮播：https://huzhengen.github.io/jirengu/10-31/slideshow.html
+
 内容、样式、行为分离
 
 HTML、CSS、JS分离

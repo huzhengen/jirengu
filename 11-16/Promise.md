@@ -62,4 +62,4 @@ window.jQuery.ajax = function(options){
 window.$ = windwo.jQuery
 ```
 
-return new Promise(function(resolve, reject){}
+`return new Promise(function(resolve, reject){}`
