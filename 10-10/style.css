@@ -5,6 +5,10 @@ body {
     padding: 0 0 60px 0;
 }
 
+a:hover {
+    text-decoration: none;
+}
+
 .icon {
     width: 1em;
     height: 1em;
@@ -171,7 +175,7 @@ hr {
     color: #e6686a;
 }
 
-.topNavBar .logo .card {
+.topNavBar .logo .rscard {
     color: #9a9da2;
 }
 
@@ -407,13 +411,15 @@ body>main .downloadResume:hover {
 }
 
 section.skills,
-section.portfolio {
+section.portfolio,
+section.message {
     max-width: 940px;
     margin: 30px auto 0;
 }
 
 section.skills>h2,
-section.portfolio>h2 {
+section.portfolio>h2,
+section.message>h2 {
     text-align: center;
     color: #3d4451;
     font-size: 34px;
@@ -544,8 +550,8 @@ section.portfolio>nav .bar.state-3 .bar-inner {
 
 section.portfolio .works {
     position: relative;
-    width:888px;
-    height:666px;
+    width: 888px;
+    height: 666px;
     margin: 30px auto 0;
 }
 
@@ -567,4 +573,20 @@ section.portfolio .works .small1 {
 section.portfolio .works .small2 {
     right: 0;
     bottom: 0;
+}
+
+section.message>ol {
+    max-width: 888px;
+    margin: 30px auto 0;
+    border-top: 1px solid #ddd;
+}
+
+section.message>ol>li {
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+#postMessageForm {
+    margin-top: 30px;
+    text-align: center;
 }
