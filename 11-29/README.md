@@ -34,7 +34,7 @@ var MYAPP = MYAPP || {}
 
 this 是 call() 的第一个参数
 
-## new
+### new
 
 ```js
 // 你用了new，下面注释的代码就会帮你写出来
