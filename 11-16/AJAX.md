@@ -33,12 +33,6 @@ request.open('GET', '/')
 request.send()
 ```
 
-JSON vs JavaScript
-
-1、JSON没有function和undefined
-
-2、JSON的字符串首尾必须是双引号
-
 同源策略
 
 只有 `协议+域名+端口` 一模一样才允许发AJAX请求

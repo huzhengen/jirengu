@@ -12,9 +12,9 @@
 
 [2018-10-15 算法 数据结构](https://github.com/huzhengen/jirengu/tree/master/10-15)
 
-[2018-10-17 JS基础 键盘导航 canvas画板](https://github.com/huzhengen/jirengu/tree/master/10-17)
+[2018-10-17 小demo 键盘导航 canvas画板](https://github.com/huzhengen/jirengu/tree/master/10-17)
 
-[2018-10-24 JS基础 数据类型 类型转换 面向对象](https://github.com/huzhengen/jirengu/tree/master/10-24)
+[2018-10-24 JS数据类型 类型转换 原型 原型链 面向对象](https://github.com/huzhengen/jirengu/tree/master/10-24)
 
 [2018-10-29 JS 数组 函数](https://github.com/huzhengen/jirengu/tree/master/10-29)
 
@@ -24,6 +24,8 @@
 
 [2018-11-14 移动端 REM](https://github.com/huzhengen/jirengu/tree/master/11-14)
 
-[2018-11-16 JSONP AJAX Promise](https://github.com/huzhengen/jirengu/tree/master/11-16)
+[2018-11-16 JSONP AJAX JSON Promise](https://github.com/huzhengen/jirengu/tree/master/11-16)
 
 [2018-11-29 面向对象](https://github.com/huzhengen/jirengu/tree/master/11-29)
+
+[2018-12-04 虚拟DOM](https://github.com/huzhengen/jirengu/tree/master/12-04)
