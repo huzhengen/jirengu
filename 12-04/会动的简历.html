@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会动的简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css">
+    <style>
+        .token.cdata,
+        .token.comment,
+        .token.doctype,
+        .token.prolog {
+            color: #000;
+        }
+        
+        .token.attr-name,
+        .token.builtin,
+        .token.char,
+        .token.inserted,
+        .token.selector,
+        .token.string {
+            color: #000;
+        }
+        
+        .token.punctuation {
+            color: #000;
+        }
+        
+        .token.boolean,
+        .token.constant,
+        .token.deleted,
+        .token.number,
+        .token.property,
+        .token.symbol,
+        .token.tag {
+            color: #000;
+        }
+        
+        .token.class-name,
+        .token.function {
+            color: #000;
+        }
+    </style>
+    <style id="styleTag"></style>
+</head>
+
+<body>
+    <pre id="code"></pre>
+    <div id="paper"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
+    <script>
+        let result = `/* hello, this is lufang */
+*{
+    transition: all 1s;
+    box-sizing: border-box;
+}
+/* 先加个背景色和字号 */
+html{
+    background-color: rgb(63, 82, 99);
+    font-size: 14px;
+}
+pre{
+    margin: 0;
+}
+/* 再加个字体 */
+html, pre{
+    font-family: 'Questrial, sans-serif';
+}
+/* 代码区域加border */
+#code{
+    border: 1px solid #ccc;
+    padding: 16px;
+    background-color: #fff;
+    overflow: auto;
+}
+/* 现在让代码高亮 */
+.token.cdata, .token.comment, .token.doctype, .token.prolog{
+    color: #708090;
+}
+.token.attr-name, .token.builtin, .token.char, .token.inserted,
+.token.selector, .token.string{
+    color: #690;
+}
+.token.punctuation{
+    color: #999;
+}
+.token.boolean, .token.constant, .token.deleted, .token.number,
+.token.property, .token.symbol, .token.tag{
+    color: #905;
+}
+.token.class-name, .token.function{
+    color: #dd4a68;
+}
+/* 右边添加一个Markdown*/
+#code, #paper{
+    background-color: #fff;
+    width:49%;
+    border: 1px solid #ccc;
+    padding: 16px;
+    white-space: pre-wrap;
+    overflow: auto;
+    max-height: 90%;
+    height: 90%;
+}
+body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+html, body{
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+`
+        let n = 0
+        let code = document.getElementById('code')
+        let styleTag = document.getElementById('styleTag')
+
+        let id = setInterval(() => {
+            n++
+            code.innerHTML = result.substring(0, n)
+            code.innerHTML = Prism.highlight(code.innerHTML, Prism.languages.css, 'css');
+            styleTag.innerHTML = result.substring(0, n)
+            if (n >= result.length) {
+                window.clearInterval(id)
+            }
+        }, 1)
+    </script>
+</body>
+
+</html>

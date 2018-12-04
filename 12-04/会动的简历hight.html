@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会动的简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark.min.css" />
+    <style>
+        .hljs-comment, .hljs-quote{
+            color: #fff;
+        }
+        .hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta-string{
+            color: #fff;
+        }
+        .hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type, .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number{
+            color: #fff;
+        }
+        .hljs-section, .hljs-name, .hljs-selector-tag, .hljs-deletion, .hljs-subst{
+            color: #fff;
+        }
+        .hljs-built_in, .hljs-class .hljs-title{
+            color: #fff;
+        }
+    </style>
+    <style id="styleTag"></style>
+</head>
+
+<body>
+    <pre id="pre"><code id="code" class="css"></code></pre>
+    <div id="paper"></div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>
+        let result = `/* hello, this is lufang */
+/* 先加个背景色 */
+html{
+    background-color: rgb(63, 82, 99);
+}
+*{
+    transition: all 1s;
+    box-sizing: border-box;
+}
+pre{
+    margin: 0;
+}
+/* 再加个字体 */
+html, pre{
+    font-family: 'Questrial, sans-serif';
+}
+/* 代码区域加border */
+#code{
+    padding: 16px;
+}
+/* 现在让代码高亮 */
+.hljs-comment, .hljs-quote{
+    color: #5c6370;
+}
+.hljs-string, .hljs-regexp, .hljs-addition, .hljs-attribute, .hljs-meta-string{
+    color: #98c379;
+}
+.hljs-attr, .hljs-variable, .hljs-template-variable, .hljs-type, .hljs-selector-class, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-number{
+    color: #d19a66;
+}
+.hljs-section, .hljs-name, .hljs-selector-tag, .hljs-deletion, .hljs-subst{
+    color: #e06c75;
+}
+.hljs-built_in, .hljs-class .hljs-title{
+    color: #e6c07b;
+}
+/* 右边添加一个Markdown*/
+#pre, #paper{
+    width:49%;
+    white-space: pre-wrap;
+    overflow: auto;
+    max-height: 90%;
+    height: 90%;
+}
+#paper{
+    padding: 16px;
+    background-color: #282c34;
+    color: #fff;
+}
+body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+html, body{
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+`
+        let n = 0
+        let code = document.getElementById('code')
+        let styleTag = document.getElementById('styleTag')
+
+        let id = setInterval(() => {
+            n++
+            code.innerHTML = result.substring(0, n)
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+            // code.innerHTML = Prism.highlight(code.innerHTML, Prism.languages.css, 'css');
+            styleTag.innerHTML = result.substring(0, n)
+            if (n >= result.length) {
+                window.clearInterval(id)                
+            }
+        }, 1)
+    </script>
+</body>
+
+</html>
