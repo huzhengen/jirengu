@@ -28,4 +28,4 @@
 
 [2018-11-29 面向对象](https://github.com/huzhengen/jirengu/tree/master/11-29)
 
-[2018-12-04 虚拟DOM 会动的简历](https://github.com/huzhengen/jirengu/tree/master/12-04)
+[2018-12-04 虚拟DOM 异步 会动的简历](https://github.com/huzhengen/jirengu/tree/master/12-04)

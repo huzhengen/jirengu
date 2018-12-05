@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会动的简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark.min.css" />
+    <link rel="stylesheet" href="https://sindresorhus.com/github-markdown-css/github-markdown.css">
+    <style>
+        .hljs-comment,.hljs-quote{
+            color:#000;
+        }
+        .hljs-doctag,.hljs-keyword,.hljs-formula{
+            color:#000;
+        }
+        .hljs-section,.hljs-name,.hljs-selector-tag,.hljs-deletion,.hljs-subst{
+            color:#000;
+        }
+        .hljs-literal{
+            color:#000;
+        }
+        .hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-meta-string{
+            color:#000;
+        }
+        .hljs-built_in,.hljs-class .hljs-title{
+            color:#000;
+        }
+        .hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-type,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-number{
+            color:#000;
+        }
+        .hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-title{
+            color:#000;
+        }        
+        #code{
+            line-height: 20px;
+        }
+        #paper{
+            display:none;
+        }
+        .hljs{
+            background: #fff;
+            padding:0;
+            color:#000;
+        }
+    </style>
+    <style id="styleTag"></style>
+</head>
+
+<body>
+    <pre id="pre"><code id="code" class="css"></code></pre>
+    <pre id="paper"><code id="paperCode" class="Markdown"></code></pre>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.5.2/marked.min.js"></script>
+    <script>
+        let cssCode = `/* 大家好，我是卢方。 */
+/* 在这里用代码介绍下自己。 */
+/* 先加个背景色 */
+html, .hljs{
+    background-color: #ccc;
+}
+html, body{
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+#pre, #paper{
+    overflow: auto;
+    max-height: 90%;
+    height: 90%;
+}
+*{
+    transition: all 1s;
+    box-sizing: border-box;
+}
+pre{
+    margin: 0;
+}
+/* 再加个字体 */
+html, pre{
+    font-family: 'Questrial, sans-serif';
+}
+#code{
+    padding: 16px;
+}
+/* 让更多代码高亮 */
+.hljs-comment,.hljs-quote{
+    color:#5c6370;font-style:italic
+}
+.hljs-doctag,.hljs-keyword,.hljs-formula{
+    color:#c678dd
+}
+.hljs-section,.hljs-name,.hljs-selector-tag,.hljs-deletion,.hljs-subst{
+    color:#e06c75
+}
+.hljs-literal{
+    color:#56b6c2
+}
+.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-meta-string{
+    color:#98c379
+}
+.hljs-built_in,.hljs-class .hljs-title{
+    color:#e6c07b
+}
+.hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-type,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-number{
+    color:#d19a66
+}
+.hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-title{
+    color:#61aeee
+}
+.hljs{
+    background: #282c34;
+    padding:0.5em;
+    color:#abb2bf;
+}
+/* 右边添加一个Markdown*/
+body{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#paper{
+    display:block;
+}
+#pre, #paper{
+    width:49%;
+    white-space: pre-wrap;
+}
+#paper{
+    padding: 16px;
+    background-color: #282c34;
+    color: #fff;
+}
+/* 现在开始写Markdown */
+`
+        let cssCode2 = `/* 好了Markdown写完了 */
+/* 现在把Markdown变成HTML
+* 3
+* 2
+* 1
+* GO
+*/
+#paper{
+    transform: rotateZ(360deg);
+}
+`
+        let cssCode3 = `/* 现在美化一下 */
+#paper{
+    padding: 40px 16px 16px;
+}
+#paper h1, #paper p, #paper ul, #paper li{
+    margin: 0;
+}
+#paper h1{
+    padding-bottom: .3em;
+    font-size: 24px;
+    border-bottom: 1px solid #eaecef;
+}
+#paper p, #paper ul{
+    margin-bottom: 16px;
+}
+#paper ul{
+    padding-left: 2em;
+}
+#paper a{
+    color: #fff;
+}
+/* 好了，完成！ */
+`
+        let markdownCode = `# 个人信息
+
+* 卢方
+* 前端工程师
+
+# 技能
+
+* JavaScript
+* React
+* Vue
+
+# 项目
+
+* 轮播
+* 画板
+* Vue项目
+
+# 联系方式
+
+* 手机：13456789012
+* Email: lufang@lufang.com
+`
+        writeCss('', cssCode, ()=>{
+            writeMarkdown(()=>{
+                writeCss(cssCode, cssCode2, ()=>{
+                    makeMarkdown(()=>{
+                        writeCss(cssCode+cssCode2, cssCode3)
+                    })
+                })
+            })
+        })
+        
+
+        function writeCss(prefix, cssCode, fn){
+            let n = 0
+            let code = document.getElementById('code')
+            let pre = document.getElementById('pre')
+            let styleTag = document.getElementById('styleTag')
+            cssCode = cssCode || ''
+
+            let id = setInterval(() => {
+                n++
+                code.innerHTML = prefix + cssCode.substring(0, n)
+                $('#pre code').each(function(i, block) {
+                    hljs.highlightBlock(block)
+                })
+                styleTag.innerHTML = prefix + cssCode.substring(0, n)
+                pre.scrollTop = pre.scrollHeight
+                if (n >= cssCode.length) {
+                    window.clearInterval(id)
+                    if(fn){fn.call()}
+                }                
+            }, 30)
+        }
+        function writeMarkdown(fn){
+            let n = 0
+            let paper = document.getElementById('paper')
+            let paperCode = document.getElementById('paperCode')
+
+            let id = setInterval(() => {
+                n++
+                paperCode.innerHTML = markdownCode.substring(0, n)
+                $('#paper code').each(function(i, block) {
+                    hljs.highlightBlock(block)
+                })
+                paper.scrollTop = paper.scrollHeight
+                if (n >= markdownCode.length) {
+                    window.clearInterval(id)
+                    if(fn){fn.call()}
+                }
+            }, 20)
+        }
+        function makeMarkdown(fn){
+            document.getElementById('paper').innerHTML = marked(markdownCode);
+            if(fn){fn.call()}
+        }
+    </script>
+</body>
+
+</html>
