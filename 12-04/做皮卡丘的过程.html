@@ -41,6 +41,20 @@
             max-height: 90%;
             height: 90%;
         }
+        .actions{
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .actions>button{
+            margin-bottom: 10px;
+        }
+        .actions>button.active{
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.8)
+        }
         @media screen and (max-width:768px){
             body{
                 flex-direction: column;
@@ -69,10 +83,15 @@
             <div class="lowerLip-wrapper"><div class="lowerLip"></div></div>
         </div>
     </div>
+    <div class="actions">
+        <button data-speed="">慢速</button>
+        <button data-speed="" class="active">中速</button>
+        <button data-speed="">快速</button>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
     <script>
-        let cssCode = `/* 准备画一个皮卡丘的脸 */
+        let cssCode = `/* 今天画一个简单的皮卡丘 */
 /* 给皮卡丘一个背景色 */
 .pikachu{
     background: #FFE600;
@@ -212,6 +231,12 @@
 /* 完成！ */
 `
         writeCss('', cssCode)
+
+        $('.actions').on('click', 'button', function(e){
+            let $button = $(e.currentTarget)
+            let $speed = $button.attr('data-speed')
+            $button.addClass('active').siblings().removeClass('active')
+        })
 
         function writeCss(prefix, cssCode, fn){
             let n = 0
