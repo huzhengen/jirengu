@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>做皮卡丘的过程</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/atom-one-dark.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 1s;
+        }
+        *::befroe {
+            box-sizing: border-box;
+        }
+        *::after {
+            box-sizing: border-box;
+        }
+        html, body{
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #code{
+            line-height: 20px;
+            white-space: pre-wrap;
+        }
+        #pre, #pikachu{
+            width: 49%;
+            overflow: auto;
+            max-height: 90%;
+            height: 90%;
+        }
+    </style>
+    <style id="styleTag"></style>
+</head>
+
+<body>
+    <pre id="pre"><code id="code" class="css"></code></pre>
+    <div id="pikachu" class="pikachu">
+        <div class="wrapper">
+            <div class="nose"></div>
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+            <div class="face left"></div>
+            <div class="face right"></div>
+            <div class="upperLip left"></div>
+            <div class="upperLip right"></div>
+            <div class="lowerLip-wrapper"><div class="lowerLip"></div></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    <script>
+        let cssCode = `/* 准备画一个皮卡丘的脸 */
+/* 给皮卡丘一个背景色 */
+.pikachu{
+    background: #FFE600;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 给皮卡丘200px的高度 */
+.pikachu .wrapper {
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+/* 画鼻子居中 */
+.pikachu .nose{
+    border-color: black transparent transparent;
+    border-width: 12px;
+    border-style: solid;
+    border-radius: 11px;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 28px;
+}
+/* 画眼睛 */
+.pikachu .eye{
+    background: #2e2e2e;
+    border: 2px solid #000;
+    border-radius: 50%;
+    width: 49px;
+    height: 49px;
+    position: absolute;
+}
+/* 左眼 */
+.pikachu .eye.left{
+    right: 50%;
+    transform: translateX(-90px);
+}
+/* 右眼 */
+.pikachu .eye.right{
+    left: 50%;
+    transform: translateX(90px);
+}
+/* 眼白 */
+.pikachu .eye::before{
+    background: #fff;
+    border: 2px solid #000;
+    border-radius: 50%;
+    content: '';
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    left: 6px;
+    top: -1px;
+}
+/* 脸蛋 */
+.pikachu .face{
+    background: #fc0d1c;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    position: absolute;
+    top: 85px;
+}
+/* 左边 */
+.pikachu .face.left{
+    right: 50%;
+    transform: translateX(-100px);
+}
+/* 右边 */
+.face.right{
+    left: 50%;
+    transform: translateX(100px);
+}
+/* 上嘴唇 */
+.pikachu .upperLip{
+    z-index: 1;
+    background: #FFE600;
+    border: 2px solid black;
+    border-top: none;
+    width: 80px;
+    height: 25px;
+    position: absolute;
+    top: 50px;
+}
+/* 左边 */
+.pikachu .upperLip.left{
+    border-bottom-left-radius: 40px 25px;
+    border-right: none;
+    right: 50%;
+    transform: rotate(-20deg);
+}
+/* 右边 */
+.pikachu .upperLip.right{
+    border-bottom-right-radius: 40px 25px;
+    border-left: none;
+    left: 50%;
+    transform: rotate(20deg);
+}
+/* 下嘴唇 */
+.pikachu .lowerLip-wrapper{
+    width: 300px;
+    height: 140px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+.pikachu .lowerLip{
+    background: #990513;
+    border-radius: 200px/2000px;
+    border: 2px solid black;
+    width: 300px;
+    height: 3500px;
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+}
+/* 来个阴影 */
+.pikachu .lowerLip::after{
+    content: '';
+    background: #fc4a62;
+    border-radius: 50%;
+    width: 126px;
+    height: 126px;
+    position: absolute;
+    bottom: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+/* 完成！ */
+`
+        writeCss('', cssCode)
+
+        function writeCss(prefix, cssCode, fn){
+            let n = 0
+            let code = document.getElementById('code')
+            let pre = document.getElementById('pre')
+            let styleTag = document.getElementById('styleTag')
+            cssCode = cssCode || ''
+
+            let id = setInterval(() => {
+                n++
+                code.innerHTML = prefix + cssCode.substring(0, n)
+                $('#pre code').each(function(i, block) {
+                    hljs.highlightBlock(block)
+                })
+                styleTag.innerHTML = prefix + cssCode.substring(0, n)
+                pre.scrollTop = pre.scrollHeight
+                if (n >= cssCode.length) {
+                    window.clearInterval(id)
+                    if(fn){fn.call()}
+                }                
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>
