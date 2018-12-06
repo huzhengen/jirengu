@@ -4,6 +4,8 @@
 
 [皮卡丘DEMO](https://huzhengen.github.io/jirengu/12-04/Pikachu.html)
 
+[做皮卡丘的过程](https://huzhengen.github.io/jirengu/12-04/%E5%81%9A%E7%9A%AE%E5%8D%A1%E4%B8%98%E7%9A%84%E8%BF%87%E7%A8%8B.html)
+
 ### ES6
 
 ```js

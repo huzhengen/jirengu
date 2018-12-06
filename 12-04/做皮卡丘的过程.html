@@ -41,6 +41,16 @@
             max-height: 90%;
             height: 90%;
         }
+        @media screen and (max-width:768px){
+            body{
+                flex-direction: column;
+            }
+            #pre, #pikachu {
+                width: 100%;
+                overflow:hidden;
+                height: 50%;
+            }
+        }
     </style>
     <style id="styleTag"></style>
 </head>
@@ -187,7 +197,7 @@
     bottom: 0;
     overflow: hidden;
 }
-/* 来个阴影 */
+/* 小舌头 */
 .pikachu .lowerLip::after{
     content: '';
     background: #fc4a62;
