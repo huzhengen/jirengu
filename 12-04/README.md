@@ -1,5 +1,9 @@
 # 虚拟DOM
 
+[会动的简历DEMO](https://huzhengen.github.io/jirengu/12-04/%E4%BC%9A%E5%8A%A8%E7%9A%84%E7%AE%80%E5%8E%86highlightjs.html)
+
+[皮卡丘DEMO](https://huzhengen.github.io/jirengu/12-04/Pikachu.html)
+
 ### ES6
 
 ```js
