@@ -46,16 +46,11 @@
                 let value = $signUpForm.find(`[name=${name}]`).val()
                 hash[name] = value
             })
-            $.post('/sign_in', hash).then(()=>{
-                console.log('success')
+            $.post('/sign_in', hash).then((response)=>{
+                console.log(response)
+                window.location = '/'
             }, (request)=>{
-                // console.log(JSON.parse(request.responseText))
-                // let {errors} = JSON.parse(request.responseText)
-                console.log(request.responseJSON)
-                let {errors} = JSON.parse(request.responseJSON)
-                if(errors.email && errors.email === 'invalid'){
-                    alert('您的邮箱格式输入错误')
-                }
+                alert('邮箱和密码不匹配')
             })
         })
     </script>

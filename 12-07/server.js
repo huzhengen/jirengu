@@ -40,9 +40,37 @@ var server = http.createServer(function(request, response) {
         response.write(string)
         response.end()
     } else if (path === '/sign_in' && method === 'POST') {
-      readBody(request).then((body) => {
-
-      })
+        readBody(request).then((body) => {
+            console.log(body)
+            let strings = body.split('&')
+            let hash = {}
+            strings.forEach((string) => {
+                let parts = string.split('=')
+                let key = parts[0]
+                let value = parts[1]
+                hash[key] = decodeURIComponent(value)
+            })
+            let { email, password } = hash
+            let users = fs.readFileSync('./db/users', 'utf8')
+            try{
+              users = JSON.parse(users)
+            }catch(e){
+              users = []
+            }
+            let found
+            for(let i=0; i<users.length; i++){
+              if(users[i].email === email && users[i].password === password){
+                found = true
+                break
+              }
+            }
+            if(found){
+              response.statusCode = 200
+            }else{
+              response.statusCode = 401
+            }
+            response.end()
+        })
     } else if (path === '/sign_up' && method === 'POST') {
         readBody(request).then((body) => {
             let strings = body.split('&')
