@@ -84,9 +84,9 @@
         </div>
     </div>
     <div class="actions">
-        <button data-speed="">慢速</button>
-        <button data-speed="" class="active">中速</button>
-        <button data-speed="">快速</button>
+        <button data-speed="slow">慢速</button>
+        <button data-speed="normal" class="active">中速</button>
+        <button data-speed="fast">快速</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
@@ -230,13 +230,27 @@
 }
 /* 完成！ */
 `
+        let duration = 50
         writeCss('', cssCode)
 
         $('.actions').on('click', 'button', function(e){
             let $button = $(e.currentTarget)
             let $speed = $button.attr('data-speed')
             $button.addClass('active').siblings().removeClass('active')
+            switch($speed){
+                case 'slow':
+                    duration = 100
+                    break
+                case 'normal':
+                    duration = 50
+                    break
+                case 'fast':
+                    duration = 10
+                    break
+            }
         })
+
+        
 
         function writeCss(prefix, cssCode, fn){
             let n = 0
@@ -245,7 +259,22 @@
             let styleTag = document.getElementById('styleTag')
             cssCode = cssCode || ''
 
-            let id = setInterval(() => {
+            // let id = setInterval(() => {
+            //     n++
+            //     code.innerHTML = prefix + cssCode.substring(0, n)
+            //     $('#pre code').each(function(i, block) {
+            //         hljs.highlightBlock(block)
+            //     })
+            //     styleTag.innerHTML = prefix + cssCode.substring(0, n)
+            //     pre.scrollTop = pre.scrollHeight
+            //     if (n >= cssCode.length) {
+            //         window.clearInterval(id)
+            //         if(fn){fn.call()}
+            //     }                
+            // }, 30)
+
+            let id
+            id = setTimeout(function run(){
                 n++
                 code.innerHTML = prefix + cssCode.substring(0, n)
                 $('#pre code').each(function(i, block) {
@@ -253,11 +282,12 @@
                 })
                 styleTag.innerHTML = prefix + cssCode.substring(0, n)
                 pre.scrollTop = pre.scrollHeight
-                if (n >= cssCode.length) {
-                    window.clearInterval(id)
+                if (n < cssCode.length) {
+                    id = setTimeout(run, duration)
+                }else{
                     if(fn){fn.call()}
-                }                
-            }, 30)
+                }             
+            }, duration)
         }
     </script>
 </body>
