@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .form {
+            max-width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .form>input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="form" id="signInForm">
+        <input type="text" name="email" placeholder="邮箱">
+        <input type="text" name="password" placeholder="密码">
+        <input type="submit" value="登录">
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <script>
+        let hash = {}
+        let $signUpForm = $('#signInForm')
+        $signUpForm.on('submit', (e) => {
+            e.preventDefault()
+            let need = ['email', 'password']
+            need.forEach((name) => {
+                let value = $signUpForm.find(`[name=${name}]`).val()
+                hash[name] = value
+            })
+            $.post('/sign_in', hash).then(()=>{
+                console.log('success')
+            }, (request)=>{
+                // console.log(JSON.parse(request.responseText))
+                // let {errors} = JSON.parse(request.responseText)
+                console.log(request.responseJSON)
+                let {errors} = JSON.parse(request.responseJSON)
+                if(errors.email && errors.email === 'invalid'){
+                    alert('您的邮箱格式输入错误')
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

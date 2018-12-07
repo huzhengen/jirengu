@@ -6,7 +6,7 @@
 
 [2018-10-08 脚本/HTTP](https://github.com/huzhengen/jirengu/tree/master/10-08)
 
-[2018-10-09 Node.js Server](https://github.com/huzhengen/jirengu/tree/master/10-09)
+[2018-10-09 Node.js Server 一个小的nodejs服务](https://github.com/huzhengen/jirengu/tree/master/10-09)
 
 [2018-10-10 HTML CSS 简历](https://github.com/huzhengen/jirengu/tree/master/10-10)
 
