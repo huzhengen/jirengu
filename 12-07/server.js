@@ -19,7 +19,6 @@ var server = http.createServer(function(request, response) {
 
     if (path == '/') {
         let string = fs.readFileSync('./index.html', 'utf8')
-
         let cookies = request.headers.cookie.split('; ')
         let hash = {}
         for (let i = 0; i < cookies.length; i++) {
@@ -42,10 +41,13 @@ var server = http.createServer(function(request, response) {
                 break
             }
         }
+        console.log(foundUser)
         if (foundUser) {
-            string = string.replace('__pasword__', foundUser.password)
+            console.log('有用户')
+            string = string.replace('__password__', foundUser.password)
         } else {
-            string = string.replace('__pasword__', '请先登录')
+            console.log('没用户')
+            string = string.replace('__password__', '请先登录')
         }
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/html; charset=utf-8')

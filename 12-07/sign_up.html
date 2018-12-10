@@ -53,11 +53,15 @@
             })
             $.post('/sign_up', hash).then(()=>{
                 console.log('success')
+                window.location = '/sign_in'
             }, (request)=>{
                 // console.log(JSON.parse(request.responseText))
                 // let {errors} = JSON.parse(request.responseText)
                 console.log(request.responseJSON)
-                let {errors} = JSON.parse(request.responseJSON)
+                // let {errors} = JSON.parse(request.responseJSON)
+                let errors = request.responseJSON.errors
+                console.log(errors)
+                console.log(errors.email)
                 if(errors.email && errors.email === 'invalid'){
                     alert('您的邮箱格式输入错误')
                 }
