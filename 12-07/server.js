@@ -8,6 +8,8 @@ if (!port) {
     process.exit(1)
 }
 
+let sessions = {}
+
 var server = http.createServer(function(request, response) {
     var parsedUrl = url.parse(request.url, true)
     var path = request.url
@@ -19,7 +21,10 @@ var server = http.createServer(function(request, response) {
 
     if (path == '/') {
         let string = fs.readFileSync('./index.html', 'utf8')
-        let cookies = request.headers.cookie.split('; ')
+        let cookies = ''
+        if(request.headers.cookie){
+            cookies = request.headers.cookie.split('; ')
+        }
         let hash = {}
         for (let i = 0; i < cookies.length; i++) {
             let parts = cookies[i].split('=')
@@ -27,7 +32,16 @@ var server = http.createServer(function(request, response) {
             let value = parts[1]
             hash[key] = value
         }
-        let email = hash.sign_in_email
+        // let email = hash.sign_in_email // cookie
+        console.log('sessions---')
+        console.log(sessions)
+        console.log(hash)
+        let mySession = sessions[hash.sessionId] // session
+        console.log(mySession)
+        let email
+        if(mySession){
+            email = mySession.sign_in_email // session
+        }
         let users = fs.readFileSync('./db/users', 'utf8')
         try {
             users = JSON.parse(users)
@@ -93,7 +107,9 @@ var server = http.createServer(function(request, response) {
             }
             if (found) {
                 // cookie
-                response.setHeader('Set-Cookie', `sign_in_email=${email}`)
+                let sessionId = Math.random()*100000
+                sessions[sessionId] = {'sign_in_email': email}
+                response.setHeader('Set-Cookie', `sessionId=${sessionId}`)
                 response.statusCode = 200
             } else {
                 response.statusCode = 401

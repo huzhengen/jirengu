@@ -8,11 +8,13 @@
 
 ### Cookie 特点
 
-1、服务器通过 Set-Cookie 响应头设置 Cookie
+1、服务器通过 Set-Cookie 响应头设置 Cookie（服务器通过 Set-Cookie 头给客户端一串字符串）
 
-2、浏览器得到 Cookie 之后，每次请求都要带上 Cookie
+2、浏览器得到 Cookie 之后，每次请求都要带上 Cookie（客户端每次访问相同域名的网页时，必须带上这段字符串）
 
-3、父亲读取 Cookie 就知道登录用户的信息
+3、服务器读取 Cookie 就知道登录用户的信息
+
+4、客户端要在一段时间内保存这个 Cookie
 
 ### Cookie存在哪？
 
