@@ -18,13 +18,38 @@ var server = http.createServer(function(request, response) {
     var method = request.method
 
     if (path == '/') {
+        let string = fs.readFileSync('./index.html', 'utf8')
+
+        let cookies = request.headers.cookie.split('; ')
+        let hash = {}
+        for (let i = 0; i < cookies.length; i++) {
+            let parts = cookies[i].split('=')
+            let key = parts[0]
+            let value = parts[1]
+            hash[key] = value
+        }
+        let email = hash.sign_in_email
+        let users = fs.readFileSync('./db/users', 'utf8')
+        try {
+            users = JSON.parse(users)
+        } catch (e) {
+            users = []
+        }
+        let foundUser
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].email === email) {
+                foundUser = users[i]
+                break
+            }
+        }
+        if (foundUser) {
+            string = string.replace('__pasword__', foundUser.password)
+        } else {
+            string = string.replace('__pasword__', '请先登录')
+        }
+        response.statusCode = 200
         response.setHeader('Content-Type', 'text/html; charset=utf-8')
-        response.write('<!DOCTYPE>\n<html>' +
-            '<head><link rel="stylesheet" href="/style.css">' +
-            '</head><body>' +
-            '<h1>你好</h1>' +
-            '<script src="/main.js"></script>' +
-            '</body></html>')
+        response.write(string)
         response.end()
     } else if (path === '/sign_in' && method === 'GET') {
         let string = fs.readFileSync('./sign_in.html', 'utf8')
@@ -52,22 +77,24 @@ var server = http.createServer(function(request, response) {
             })
             let { email, password } = hash
             let users = fs.readFileSync('./db/users', 'utf8')
-            try{
-              users = JSON.parse(users)
-            }catch(e){
-              users = []
+            try {
+                users = JSON.parse(users)
+            } catch (e) {
+                users = []
             }
             let found
-            for(let i=0; i<users.length; i++){
-              if(users[i].email === email && users[i].password === password){
-                found = true
-                break
-              }
+            for (let i = 0; i < users.length; i++) {
+                if (users[i].email === email && users[i].password === password) {
+                    found = true
+                    break
+                }
             }
-            if(found){
-              response.statusCode = 200
-            }else{
-              response.statusCode = 401
+            if (found) {
+                // cookie
+                response.setHeader('Set-Cookie', `sign_in_email=${email}`)
+                response.statusCode = 200
+            } else {
+                response.statusCode = 401
             }
             response.end()
         })
@@ -132,14 +159,6 @@ var server = http.createServer(function(request, response) {
             response.statusCode = 200
             response.end()
         })
-    } else if (path == '/main.js') {
-        response.setHeader('Content-Type', 'text/javascript; charset=utf-8')
-        response.write('console.log("这是JS执行的")')
-        response.end()
-    } else if (path == '/style.css') {
-        response.setHeader('Content-Type', 'text/css; charset=utf-8')
-        response.write('body{background-color: #ddd;}h1{color: red;}')
-        response.end()
     } else {
         response.statusCode = 404
         response.end()

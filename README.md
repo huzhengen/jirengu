@@ -29,3 +29,5 @@
 [2018-11-29 面向对象](https://github.com/huzhengen/jirengu/tree/master/11-29)
 
 [2018-12-04 虚拟DOM 异步 会动的简历 Pikachu](https://github.com/huzhengen/jirengu/tree/master/12-04)
+
+[2018-12-07 cookie 登录注册](https://github.com/huzhengen/jirengu/tree/master/12-07)
