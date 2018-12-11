@@ -1,10 +1,10 @@
 # Session
 
-服务器通过cookie给用户一个sessionId
+服务器通过Cookie给用户一个 SessionId
 
-sessionId对应服务器里的一小块内存
+SessionId对应服务器里的一小块内存
 
-每次用户访问服务器的时候，服务器就通过sessionId读取对应的session，就知道用户的信息了。
+每次用户访问服务器的时候，服务器就通过SessionId读取对应的Session，就知道用户的信息了。
 
 ### Session
 
@@ -12,11 +12,11 @@ sessionId对应服务器里的一小块内存
 
 2、客户端访问服务器时，服务器读取SessionID
 
-3、服务器有一块内存（哈希表）保存了所有session
+3、服务器有一块内存（哈希表）保存了所有Ssession
 
 4、通过SessionID我们可以得到对应用户的隐私信息，如id、email
 
-5、这块内存（哈希表）就是服务器上的所有session
+5、这块内存（哈希表）就是服务器上的所有 Session
 
 ### LocalStorage
 
@@ -25,3 +25,5 @@ HTML5提供的API
 ```js
 window.localStorage
 ```
+
+Session 是基于Cookie实现的，那么可以不基于Cookie吗？

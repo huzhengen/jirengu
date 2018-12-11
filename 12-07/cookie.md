@@ -1,8 +1,8 @@
-# cookie
+# Cookie
 
 请求头
 
-有了cookie的时候，请求头会带上cookie
+有了 Cookie 的时候，请求头会带上 Cookie
 
 响应头
 
@@ -16,7 +16,9 @@
 
 4、客户端要在一段时间内保存这个 Cookie
 
-### Cookie存在哪？
+Cookie 默认在用户关闭页面后失效，后台代码可以任意设置 Cookie 过期时间
+
+### Cookie 存在哪？
 
 Windows存在C盘的一个文件里
 
@@ -30,4 +32,6 @@ Windows存在C盘的一个文件里
 
 用户打开注册页面注册，发post请求，post email和密码，服务器收到，写入数据库，然后告诉用户注册成功了。
 
-用户打开登录页面，发post，登录，给email和密码，如果在数据库中，则设置cookie，（这时候用户访问首页的话，会带上cookie，服务器会读cookie，根据cookie的email可以找到该用户，则能找到该用户的email、password等信息，这时就可以在首页填入该用户的这些信息。）
+用户打开登录页面，发post，登录，给email和密码，如果在数据库中，则设置 Cookie ，（这时候用户访问首页的话，会带上 Cookie ，服务器会读 Cookie ，根据 Cookie 的email可以找到该用户，则能找到该用户的email、password等信息，这时就可以在首页填入该用户的这些信息。）
+
+前端不要读写 Cookie ，可以用 localStorage
