@@ -97,7 +97,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 function fn() {
-  console.log(1);
+  var a = 1;
+  console.log(a);
 }
 
 exports.default = fn;
@@ -177,7 +178,7 @@ exports = module.exports = __webpack_require__(5)(false);
 
 
 // module
-exports.push([module.i, "body {\n  background: #ddd;\n  display: flex; }\n", ""]);
+exports.push([module.i, "body {\n  background: #ddd;\n  display: flex; }\n  body .box {\n    color: red; }\n", ""]);
 
 // exports
 

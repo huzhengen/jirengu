@@ -1,4 +1,7 @@
-body{
-  background: #ddd;
-  display: flex;
+body {
+    background: #ddd;
+    display: flex;
+    .box {
+        color: red;
+    }
 }
