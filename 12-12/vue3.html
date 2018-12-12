@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue3</title>
+    <style>
+        ol,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .wrapper {
+            width: 300px;
+            margin: 10px auto;
+        }
+        
+        ol {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        ol>li {
+            border: 1px solid #ccc;
+            width: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .active {
+            background: green;
+        }
+        
+        ol>li.active {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+    <script>
+        let view = new Vue({
+            el: '#app',
+            data: {
+                selected: 'a',
+                tabs: [{
+                    name: 'a',
+                    content: 'aaa'
+                }, {
+                    name: 'b',
+                    content: 'bbb'
+                }, {
+                    name: 'c',
+                    content: 'ccc'
+                }, ]
+            },
+            template: `<div class="wrapper">
+                        <ol>
+                            <li v-on:click="selected = tab.name" 
+                            v-bind:class="{active: tab.name === selected}"
+                            
+                            v-for="tab in tabs">{{tab.name}}</li>
+                        </ol>
+                        <hr/>
+                        <ol>
+                            <li v-show="selected === tab.name" v-for="tab in tabs">{{tab.content}}</li>
+                        </ol>
+                    </div>`,
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

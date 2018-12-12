@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue2</title>
+    <style>
+        .wrapper{
+            width: 300px;
+            margin: 10px auto;
+        }
+        .slides {
+            width: 300px;
+            background: red;
+            height: 100px;
+        }
+        
+        .window {
+            width: 100px;
+            height: 100px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+    <script>
+        let view = new Vue({
+            el: '#app',
+            data: {
+                transformValue: ''
+            },
+            template: `<div class="wrapper">
+                        <div class="window">
+                            <div class="slides" v-bind:style="{transform:transformValue}"></div>
+                        </div>
+                        <button v-on:click="go(0)">1</button>
+                        <button v-on:click="go(1)">2</button>
+                        <button v-on:click="go(2)">3</button>
+                    </div>
+                `,
+            methods: {
+                go(index){
+                    this.transformValue = `translateX(${-100*index}px)`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
