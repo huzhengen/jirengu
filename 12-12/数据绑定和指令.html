@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="message">{{message}}</div>
+        <div class="demo1">{{ 6+6 }}</div>
+        <div class="demo2">{{ 6 > 3 ? message : num }}</div>
+        <!-- <div class="demo3">{{ if(6>3){} }}</div> -->
+        <!-- <div class="demo4">{{ var a = 6 }}</div> -->
+    </div>
+
+
+    <script>
+        let app = new Vue({
+            el: '#app', //el可以是DOM，可以是标签，可以是CSS语法
+            data: {
+                message: 'hello hello',
+                num: 1,
+            },
+            created: function() {
+                // alert('created')
+            },
+            mounted: function() {
+                // alert('mounted')
+            },
+            beforeDestroy: function() {
+                // alert('beforeDestroy')
+            }
+        })
+
+        console.log(app.$el)
+        console.log(app.$data)
+        console.log(app.message)
+    </script>
+</body>
+
+</html>
