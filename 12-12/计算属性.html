@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="text">{{ text }}</div>
+        <div class="text2">{{ reverseText }}</div>
+        <div class="text1">{{ text.split(',').reverse().join(',') }}</div>
+        <div class="now">计算属性的缓存：{{now}}</div>
+        <div class="now">通过methods拿到的时间戳：{{thisTime()}}</div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        // 把'123,456,789'变成'789,456,123'
+        let app = new Vue({
+            el: '#app',
+            data: {
+                text: '123,456,789'
+            },
+            computed: {
+                reverseText: function(){
+                    return this.text.split(',').reverse().join(',')
+                },
+                now: function(){
+                    return Date.now()
+                }
+            },
+            methods: {
+                thisTime: function(){
+                    return Date.now()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="name">{{fullName}}</div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                firstName: 'Jim',
+                lastName: 'Green'
+            },
+            computed: {
+                fullName: {
+                    get: function() {
+                        return this.firstName + ' ' + this.lastName
+                    },
+                    set: function(newValue) {
+                        console.log('computed fullName set')
+                        let names = newValue.split(' ')
+                        this.firstName = names[0]
+                        this.lastName = names[1]
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
