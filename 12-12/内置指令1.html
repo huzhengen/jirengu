@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="hello">{{cloakData}}</div>
+        <div v-cloak>{{cloakData}}</div>
+        <div v-once>{{onceData}}</div>
+        <div v-if="6<3">{{apple}}</div>
+        <div v-else-if="9>6">{{orange}}</div>
+        <div v-else>{{banana}}</div>
+        <div class="form">
+            <div v-if="type==='name'">用户名：<input type="text" placeholder="用户名" key="name"></div>
+            <div v-else>密码：<input type="text" placeholder="密码" key="password"></div>
+            <div><button @click="toggleType">click me change</button></div>
+        </div>
+        <div v-show="6>3">{{showData}}</div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                cloakData: 'cloakData',
+                onceData: 'onceData',
+                apple: 'apple',
+                banana: 'banana',
+                orange: 'orange',
+                type: 'name',
+                showData: 'showData',
+            },
+            methods: {
+                toggleType: function() {
+                    this.type = (this.type === 'name' ? 'password' : 'name')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

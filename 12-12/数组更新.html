@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <div><span>{{msg}}</span><input type="text" v-model="msg"></div>
+        <ul>
+            <li v-for="value in arr">{{value}}</li>
+        </ul>
+        <button @click="push">push</button>
+        <button @click="pop">pop</button>
+        <button @click="shift">shift</button>
+        <button @click="unshift">unshift</button>
+        <button @click="splice">splice</button>
+        <button @click="sort">sort</button>
+        <button @click="reverse">reverse</button>
+        <hr>
+        <div>返回带有oo的：{{matchOO}}</div>
+        <hr>
+        <div>
+            <button @click="handle()">{{count}}</button>
+            <button @click="handle(10)">{{count}}</button>
+        </div>
+        <hr>
+        <div><button @click.self></button></div>
+        <div><button @click.stop></button></div>
+        <form action="" @submit.prevent>
+            <button type="submit">点击阻止默认提交</button>
+            <button @keyup.13>键盘事件</button>
+            <button @keyup.enter>键盘事件</button>
+        </form>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'v-model',
+                arr: ['book', 'pen', 'large'],
+                count: 0,
+            },
+            computed: {
+                matchOO: function() {
+                    return this.arr.filter(function(value) {
+                        return value.match(/oo/)
+                    })
+                }
+            },
+            methods: {
+                push: function() {
+                    this.arr.push('taxi')
+                },
+                pop: function() {
+                    this.arr.pop()
+                },
+                shift: function() {
+                    this.arr.shift()
+                },
+                unshift: function() {
+                    this.arr.unshift('apple')
+                },
+                splice: function() {
+                    this.arr.splice(0, 1)
+                        // this.arr.splice(0,0,'alice')
+                        // this.arr.splice(0)
+                },
+                sort: function() {
+                    this.arr.sort(function(a, b) {
+                        return a.length - b.length
+                    })
+                },
+                reverse: function() {
+                    this.arr.reverse()
+                },
+                filter: function() {
+                    this.arr.filter()
+                },
+                //改变数组的指定向和改变数组的长度，Vue监测不到
+                // changeOne: function() {
+                //     this.arr[0] = 'car'
+                // },
+                handle: function(plus) {
+                    plus = plus || 1
+                    this.count += plus
+                }
+            }
+        })
+
+        // Vue.set(app.arr, 1, 'dog')
+    </script>
+</body>
+
+</html>

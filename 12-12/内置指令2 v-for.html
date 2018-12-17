@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="i in vueMethods">{{i.name}}</li>
+        </ul>
+        <ul>
+            <li v-for="(key,index) in vueMethods">{{index}} - {{key.name}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="color in colors">{{color}}</li>
+        </ul>
+        <ul>
+            <li v-for="(value,key,index) in colors">{{index}} - {{key}} - {{value}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                vueMethods: [{
+                    name: 'think'
+                }, {
+                    name: 'practice'
+                }, {
+                    name: 'teacher'
+                }, ],
+                colors: {
+                    color1: 'red',
+                    color2: 'green',
+                    color3: 'purple'
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
