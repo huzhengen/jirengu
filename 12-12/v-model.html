@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{value}}</p>
+        <hr>
+        <input type="text" v-model="value">
+        <hr>
+        <textarea name="" v-model="value" id="" cols="30" rows="10"></textarea>
+        <hr>
+        <input type="radio" name="" id="" v-bind:checked="oneRadio"> oneRadio
+        <hr>
+        <input type="radio" name="sex" value="男" id="" v-model="checkname"> 男<br>
+        <input type="radio" name="sex" value="女" id="" v-model="checkname"> 女<br>
+        <hr>
+        <input type="checkbox" :checked="oneRadio" name="" id=""> oneCheckbox<br>
+        <input type="checkbox" v-model="oneRadio" name="" id=""> oneCheckbox<br>
+        <hr>
+        <input type="checkbox" v-model="booknames" value="三体" id=""> 三体<br>
+        <input type="checkbox" v-model="booknames" value="球状闪电" id=""> 球状闪电<br>
+        <input type="checkbox" v-model="booknames" value="超新星纪元" id=""> 超新星纪元<br>
+        <hr>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                value: 'hello vue',
+                oneRadio: true,
+                checkname: '女',
+                booknames: [],
+            },
+        })
+    </script>
+</body>
+
+</html>
