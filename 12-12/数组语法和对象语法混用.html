@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .bgred {
+            background: red;
+        }
+        
+        .bggreen {
+            background: green;
+        }
+        
+        .demo1 img {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div :class="[{active:isActive}, errorActive]"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                isActive: true,
+                errorActive: 'error'
+            },
+            computed: {
+                classnames: function() {
+                    return {
+                        active: this.isActive,
+                        border: this.isBorder,
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

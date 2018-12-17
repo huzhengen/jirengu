@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .bgred {
+            background: red;
+        }
+        
+        .bggreen {
+            background: green;
+        }
+        
+        .demo1 img {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="demo1">
+            <a v-bind:href="url" :class="cat"><img :src="imgUrl" alt=""></a>
+        </div>
+        <div :class="{box:isActive,bgred:isRed,bggreen:isGreen}">对象语法绑定class</div>
+        <div class="demo2"><button @click="toggleColor">click me</button></div>
+        <div :class="classnames">计算属性绑定class</div>
+        <div :class="[activeClass,errorActive]">数组语法绑定class（数组中的成员对应类名）</div>
+        <div :style="{'color':color,'fontSize':fontSize,'transform':transform}"></div>
+        <div :style="[styleA,styleB]"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                cat: 'panghu',
+                url: 'https://www.baidu.com/',
+                imgUrl: 'https://wx1.sinaimg.cn/mw690/71b2cbb3ly1fy7pjs7tgyj20u0148kjo.jpg',
+                isActive: true,
+                isBorder: true,
+                isRed: true,
+                isGreen: false,
+                activeClass: 'active',
+                errorActive: 'error',
+                color: 'red',
+                fontSize: '16px',
+                transform: 'translateX(50px)',
+                styleA: {
+                    color: 'red',
+                    border: '1px solid #ccc',
+                },
+                styleB: {
+                    display: 'flex',
+                    alignItems: 'center',
+                }
+            },
+            computed: {
+                classnames: function() {
+                    return {
+                        active: this.isActive,
+                        border: this.isBorder,
+                    }
+                }
+            },
+            methods: {
+                toggleColor: function() {
+                    this.isGreen = !this.isGreen
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
