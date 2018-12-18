@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>父级数据：{{msg}}</p>
+        <button @click="handle">点击父级修改子组件的数据</button>
+        <son-a ref="a"></son-a>
+        <son-b ref="b"></son-b>
+        <son-c ref="c"></son-c>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                bus: new Vue(),
+                msg: '原来父级的数据，等待修改中...'
+            },
+            methods: {
+                handle: function() {
+                    console.log(this.$refs.b.msg)
+                    this.$refs.b.msg = 'xxx'
+                }
+            },
+            components: {
+                'son-a': {
+                    template: `<div><button @click="handle">点击向组件B通信</button></div>`,
+                    data: function() {
+                        return {
+                            msg: '组件A'
+                        }
+                    },
+                    methods: {
+                        handle: function() {
+                            this.$root.bus.$emit('xxx', this.msg)
+                        }
+                    }
+                },
+                'son-b': {
+                    template: `<div>{{msg}}</div>`,
+                    data: function() {
+                        return {
+                            msg: '组件B'
+                        }
+                    },
+                    created: function() {
+                        this.$root.bus.$on('xxx', function(value) {
+                            console.log(value)
+                        })
+                    }
+                },
+                'son-c': {
+                    template: `<div><button @click="handle">点击修改父级的数据</button></div>`,
+                    data: function() {
+                        return {
+                            msg: '组件C'
+                        }
+                    },
+                    methods: {
+                        handle: function() {
+                            this.$parent.msg = '修改成功！组件C修改了父级数据'
+                        }
+                    }
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
