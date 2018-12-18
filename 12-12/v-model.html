@@ -13,6 +13,9 @@
         <p>{{value}}</p>
         <hr>
         <input type="text" v-model="value">
+        <input type="text" v-model.lazy="value">
+        <input type="text" v-model.number="value">
+        <input type="text" v-model.trim="value">
         <hr>
         <textarea name="" v-model="value" id="" cols="30" rows="10"></textarea>
         <hr>
@@ -24,10 +27,21 @@
         <input type="checkbox" :checked="oneRadio" name="" id=""> oneCheckbox<br>
         <input type="checkbox" v-model="oneRadio" name="" id=""> oneCheckbox<br>
         <hr>
-        <input type="checkbox" v-model="booknames" value="三体" id=""> 三体<br>
-        <input type="checkbox" v-model="booknames" value="球状闪电" id=""> 球状闪电<br>
-        <input type="checkbox" v-model="booknames" value="超新星纪元" id=""> 超新星纪元<br>
+        <input type="checkbox" v-model="booknames" :true-value="trueValue" :false-value="falseValue" value="三体" id=""> 三体<br>
+        <input type="checkbox" v-model="booknames" :true-value="trueValue" :false-value="falseValue" value="球状闪电" id=""> 球状闪电<br>
+        <input type="checkbox" v-model="booknames" :true-value="trueValue" :false-value="falseValue" value="超新星纪元" id=""> 超新星纪元<br>
         <hr>
+        <select name="" id="" v-model="oneSelected">
+            <option value="三体">三体</option>
+            <option value="球状闪电">球状闪电</option>
+            <option value="超新星纪元">超新星纪元</option>
+        </select>
+        <hr>
+        <select name="" id="" v-model="multipleSelected" multiple>
+            <option value="三体">三体</option>
+            <option value="球状闪电">球状闪电</option>
+            <option value="超新星纪元">超新星纪元</option>
+        </select>
     </div>
     <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
     <script>
@@ -38,6 +52,8 @@
                 oneRadio: true,
                 checkname: '女',
                 booknames: [],
+                oneSelected: [],
+                multipleSelected: [],
             },
         })
     </script>
