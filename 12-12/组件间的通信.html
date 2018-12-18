@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>total:{{total}}</p>
+        <son :total="total" @change="change"></son>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                total: 2000
+            },
+            methods: {
+                change: function(value) {
+                    console.log(value)
+                    this.total = value
+                }
+            },
+            components: {
+                'son': {
+                    props: ['total'],
+                    template: `<div><p>{{count}}</p>
+                        <button @click="increase">+100</button><button @click="reduce">-100</button>
+                    </div>`,
+                    data: function() {
+                        return {
+                            count: this.total
+                        }
+                    },
+                    methods: {
+                        increase: function() {
+                            this.count += 100
+                            this.$emit('change', this.count)
+                        },
+                        reduce: function() {
+                            this.count -= 100
+                            this.$emit('change', this.count)
+                        }
+                    }
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
