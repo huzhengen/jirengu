@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <first-component></first-component>
+        <table><tr is="second-component"></tr></table>
+        <hr>
+        <btn-component></btn-component>
+        <btn-component></btn-component>
+        <hr>
+        <third-component msg="我是来自父组件的内容"></third-component>
+        <hr>
+        <input type="text" v-model.lazy="parentMsg">
+        <fourth-component :msg="parentMsg"></fourth-component>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        Vue.component('first-component', {
+            template: '<div>first component</div>'
+        })
+        let app = new Vue({
+            el: '#app',
+            data: {
+                parentMsg: 'hello vue'
+            },
+            components:{
+                'second-component':{
+                    template: '<div>second component</div>'
+                },
+                'btn-component': {
+                    template: '<button @click="count++">{{count}}</button>',
+                    data: function(){
+                        return {
+                            count: 0
+                        }
+                    }
+                },
+                'third-component':{
+                    props: ['msg'],
+                    template: '<div>{{msg}}</div>'
+                },
+                'fourth-component':{
+                    props: ['msg'],
+                    template: '<div>{{msg}}</div>'
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
