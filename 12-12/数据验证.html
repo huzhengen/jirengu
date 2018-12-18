@@ -10,13 +10,46 @@
 
 <body>
     <div id="app">
-
+        <a href="https://cn.vuejs.org/v2/guide/components-props.html#Prop-%E9%AA%8C%E8%AF%81">数据验证</a>
+        <first my-msg="hello vue"></first>
+        <second :num="num" :b="b" :c="c" :d="d"></second>
     </div>
     <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
     <script>
         let app = new Vue({
             el: '#app',
-            data: {},
+            data: {
+                num: 6,
+                b: 'xxx',
+                c: '',
+                d: 'dsf'
+            },
+            components: {
+                'first': {
+                    props: ['myMsg'],
+                    template: '<div>{{count}}</div>',
+                    data: function() {
+                        return {
+                            count: this.myMsg
+                        }
+                    }
+                },
+                'second': {
+                    props: {
+                        num: Number,
+                        b: [String, Number],
+                        c: {
+                            type: Boolean,
+                            default: true
+                        },
+                        d: {
+                            type: String,
+                            required: true,
+                        }
+                    },
+                    template: '<div>{{num}}|{{b}}|{{c}}|{{d}}</div>',
+                },
+            }
         })
     </script>
 </body>
