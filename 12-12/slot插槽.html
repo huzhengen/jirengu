@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <son-a>获取到了父组件的msg：{{msg}}</son-a>
+        <hr>
+        <son-b>
+            <header slot="header"><span>header123</span></header>
+            <main slot="main">main</main>
+            <footer slot="footer">footer</footer>
+        </son-b>
+        <hr>
+        <son-c>
+            <!-- <template slot="sonc" slot-scope="prop">子组件C的text：{{prop.text}}</template> -->
+            <p slot="sonc" slot-scope="prop">子组件C的text：{{prop.text}}</p>
+        </son-c>
+        <hr>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: '父组件',
+            },
+            components: {
+                'son-a': {
+                    template: `<div><slot>如果父组件没有内容，默认显示的</slot></div>`,
+                    data: function() {
+                        return {
+                            msg: '子组件A'
+                        }
+                    },
+                },
+                'son-b': {
+                    template: `<div>
+                            <slot name="header"></slot>
+                            <slot>aside</slot>
+                            <slot name="footer"></slot>
+                    </div>`,
+                    data: function() {
+                        return {
+                            msg: '子组件B'
+                        }
+                    },
+                    mounted: function() {
+                        console.log(this.$slots.header)
+                        console.log(this.$slots.header[0].elm.innerText)
+                        console.log(this.$slots.header[0].elm.innerHTML)
+                    }
+                },
+                'son-c': {
+                    template: '<div class="c"><slot text="子组件C" name="sonc"></slot></div>'
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
