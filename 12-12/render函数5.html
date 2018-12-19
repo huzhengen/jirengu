@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child :show="show"></child>
+        <button @click="switchImg">点击切换图片</button>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                show: false,
+            },
+            methods: {
+                switchImg() {
+                    this.show = !this.show
+                },
+            },
+            components: {
+                'child': {
+                    props: ['show'],
+                    render(createElement) {
+                        let imgSrc
+                        if (this.show) {
+                            imgSrc = './cat1.jpg'
+                        } else {
+                            imgSrc = './cat2.jpg'
+                        }
+                        console.log(imgSrc)
+                        return createElement('img', {
+                            attrs: {
+                                src: imgSrc
+                            },
+                            style:{
+                                width: '500px'
+                            }
+                        })
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

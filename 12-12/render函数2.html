@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child></child>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                'child': {
+                    render(createElement) {
+                        // return createElement('h1')
+                        /*return createElement({
+                            template: '<h2>child</h2>'
+                        })*/
+                        /*let fn3 = function() {
+                            return {
+                                template: '<h3>child3</h3>'
+                            }
+                        }
+                        return createElement(fn3())*/
+
+                        return createElement('h1', {
+                            class: {
+                                box: true,
+                                    demo: true,
+                                    wrapper: false,
+                            },
+                            style: {
+                                color: 'red',
+                                fontSize: '16px',
+                            },
+                            attrs: {
+                                id: 'ele',
+                                'data-uid': 'xxx'
+                            },
+                            domProps: {
+                                innerHTML: '<span>123</span>'
+                            }
+                        })
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

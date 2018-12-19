@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child>
+            <template scope="prop">
+                {{prop.msg}} - {{prop.text}}
+            </template>
+        </child>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            components: {
+                'child': {
+                    props: ['name'],
+                    render(createElement) {
+                        return createElement('div', this.$scopedSlots.default({
+                            text: '我是子组件传递过来的数据',
+                            msg: '子组件say'
+                        }))
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

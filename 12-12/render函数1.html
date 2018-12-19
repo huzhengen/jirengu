@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child1 :level="level">child1 - </child1>
+        <hr>
+        <child2 :level="level">child2 - </child2>
+    </div>
+    <template id="child">
+        <div>
+            <h3 v-if="level===1"><slot></slot>level1</h3>
+            <h3 v-else-if="level===2"><slot></slot>level2</h3>
+            <h3 v-else-if="level===3"><slot></slot>level3</h3>
+        </div>
+    </template>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                level: 1,
+            },
+            components: {
+                'child1': {
+                    props: ['level'],
+                    template: '#child'
+                },
+                'child2': {
+                    props: ['level'],
+                    render: function(createElement) {
+                        return createElement('h3', this.$slots.default)
+                    }
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>
