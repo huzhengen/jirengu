@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child value="hello vue">
+
+        </child>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg: '我是父组件的msg'
+            },
+            components: {
+                'child': {
+                    props: ['value'],
+                    functional: true,
+                    render(createElement, context) {
+                        return createElement('button', {
+                            on: {
+                                click() {
+                                    console.log(context)
+                                    console.log(context.parent)
+                                    console.log(context.parent.msg)
+                                    console.log(context.props.value)
+                                },
+                            }
+                        }, 'click me')
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
