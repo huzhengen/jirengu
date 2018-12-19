@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        打开页面直接获取焦点：<input type="text" v-focus><input type="text">
+        <hr>
+        <div v-kk:msg.a.b.c="test123"></div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        Vue.directive('focus', {
+            inserted(el) {
+                el.focus()
+            },
+        })
+        Vue.directive('kk', {
+            bind(el, binding, vnode) {
+                console.log(vnode)
+                el.innerHTML = `name - ${binding.name}<br>
+                    oldValue - ${binding.oldValue}<br>
+                    value - ${binding.value}<br>
+                    expression - ${binding.expression}<br>
+                    argument - ${binding.arg}<br>
+                    modifiers - ${JSON.stringify(binding.modifiers)}<br>
+                `
+            }
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                test123: '自定义指令kk绑定的值'
+            },
+        })
+    </script>
+</body>
+
+</html>
