@@ -11,7 +11,9 @@
 <body>
     <div id="app">
         <first-component></first-component>
-        <table><tr is="second-component"></tr></table>
+        <table>
+            <tr is="second-component"></tr>
+        </table>
         <hr>
         <btn-component></btn-component>
         <btn-component></btn-component>
@@ -31,23 +33,23 @@
             data: {
                 parentMsg: 'hello vue'
             },
-            components:{
-                'second-component':{
+            components: {
+                'second-component': {
                     template: '<div>second component</div>'
                 },
                 'btn-component': {
                     template: '<button @click="count++">{{count}}</button>',
-                    data: function(){
+                    data: function() {
                         return {
                             count: 0
                         }
                     }
                 },
-                'third-component':{
+                'third-component': {
                     props: ['msg'],
                     template: '<div>{{msg}}</div>'
                 },
-                'fourth-component':{
+                'fourth-component': {
                     props: ['msg'],
                     template: '<div>{{msg}}</div>'
                 },

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <component :is="defaultView"></component>
+        <button @click="handleView('a')">点击显示子组件A</button>
+        <button @click="handleView('b')">点击显示子组件B</button>
+        <button @click="handleView('c')">点击显示子组件C</button>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.21/vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                defaultView: 'son-a'
+            },
+            methods: {
+                handleView(tag) {
+                    this.defaultView = `son-${tag}`
+                },
+            },
+            components: {
+                'son-a': {
+                    template: `<div>子组件A</div>`,
+                },
+                'son-b': {
+                    template: `<div>子组件B</div>`,
+                },
+                'son-c': {
+                    template: `<div>子组件C</div>`,
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>
