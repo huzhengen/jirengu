@@ -5,10 +5,10 @@
         <router-link to="/">Index</router-link>
       </li>
       <li>
-        <router-link to="/hello">HelloWorld</router-link>
+        <router-link :to="{name:'hello',params:{hellomsg:'hellomsg'}}">HelloWorld</router-link>
       </li>
       <li>
-        <router-link to="/hello1">Hello1</router-link>
+        <router-link :to="{name:'hello1',params:{hello1msg:'hello1msg'}}">Hello1</router-link>
       </li>
     </ul>
   </div>

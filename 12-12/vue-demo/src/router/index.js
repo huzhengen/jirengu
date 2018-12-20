@@ -7,10 +7,12 @@ Vue.use(VueRouter)
 
 export default new VueRouter({
     routes: [{
-        path: '/hello',
+        name: 'hello',
+        path: '/hello/hellomsg',
         component: HelloWorld
     }, {
-        path: '/hello1',
+        name: 'hello1',
+        path: '/hello1/hello1msg',
         component: Hello1
     }]
 })
