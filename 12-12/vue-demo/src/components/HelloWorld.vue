@@ -14,6 +14,7 @@
 <script>
 import Vue from "vue";
 import axios from "axios";
+import qs from "qs";
 Vue.prototype.$http = axios;
 export default {
   name: "HelloWorld",
@@ -40,14 +41,17 @@ export default {
           console.log(e);
         });
     },
-    getData() {
+    postData() {
       this.$http
-        .post("https://cnodejs.org/api/v1/topics", {
-          params: {
-            page: 1,
-            limit: 5
-          }
-        })
+        .post(
+          "https://cnodejs.org/api/v1/topics",
+          qs.stringify({
+            params: {
+              page: 1,
+              limit: 5
+            }
+          })
+        )
         .then(res => {
           console.log(res.data.data);
           this.topics = res.data.data;
@@ -67,7 +71,7 @@ ul {
   padding: 0;
 }
 li {
-  margin: 0 10px;
+  margin: 10px 0;
 }
 a {
   color: #42b983;
