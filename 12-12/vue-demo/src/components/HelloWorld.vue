@@ -6,7 +6,7 @@
     <button @click="getData">click to GET</button>
     <button @click="postData">click to POST</button>
     <ul>
-      <li v-for="value in topics">{{value.title}}</li>
+      <li v-for="value in topics" :key="value.id">{{value.title}}</li>
     </ul>
   </div>
 </template>
