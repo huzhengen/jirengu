@@ -10,6 +10,15 @@
       <li>
         <router-link :to="{name:'hello1',params:{hello1msg:'hello1msg'}}">Hello1</router-link>
       </li>
+      <li>
+        <router-link :to="{name:'parent'}">Parent</router-link>
+      </li>
+      <li>
+        <router-link :to="{name:'son'}">Son</router-link>
+      </li>
+      <li>
+        <router-link :to="{name:'outter'}">Outter</router-link>
+      </li>
     </ul>
   </div>
 </template>
