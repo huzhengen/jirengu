@@ -4,6 +4,8 @@
     <h2>{{fromParentMsg}}</h2>
     <button @click="dataToParent">向父组件传递数据</button>
     <h3>全局状态：{{getNum}}</h3>
+    <button @click="sonAdd">子组件改变状态</button>
+    <button @click="sonAddByActions">子组件通过actions改变状态</button>
   </div>
 </template>
 
@@ -34,6 +36,12 @@ export default {
   methods: {
     dataToParent() {
       this.$emit("handle", this.toParentMsg);
+    },
+    sonAdd() {
+      this.$store.commit("increase");
+    },
+    sonAddByActions() {
+      this.$store.dispatch("reduceAction");
     }
   }
 };
