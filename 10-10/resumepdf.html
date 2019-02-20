@@ -9,13 +9,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
+    <style>
+    
+        @media print {
+          a{
+                text-decoration: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="site-welcome active" id="siteWelcome">
+    <!-- <div class="site-welcome active" id="siteWelcome">
         <div class="loading"></div>
-    </div>
-    <div class="topNavBar clearfix" id="topNavBar">
+    </div> -->
+    <div class="topNavBar clearfix" id="topNavBar" style="position: absolute;">
         <a href="" class="logo" alt="logo"><span class="rs">RS</span><span class="rscard">card</span></a>
         <nav>
             <ul class="clearfix">
@@ -23,11 +31,11 @@
                 <li class="clickMenu"><a href="#siteSkills">我的技能</a></li>
                 <li class="clickMenu">
                     <a href="#siteWorks">我的作品</a>
-                    <ul class="submenu">
+                    <!-- <ul class="submenu">
                         <li><a href="javascript:;">作品1</a></li>
                         <li><a href="javascript:;">作品22</a></li>
                         <li><a href="javascript:;">作品333</a></li>
-                    </ul>
+                    </ul> -->
                 </li>
                 <!-- <li>
                     <a href="">我的博客</a>
@@ -157,8 +165,8 @@
                 <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
                 <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <!-- <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div> -->
             </div>
             <!-- <div class="big"><img src="./img/portfolio1.jpg" alt=""></div>
             <div class="small small1"><img src="./img/portfolio2.jpg" alt=""></div>
@@ -181,12 +189,12 @@
         <ol id="messageList"></ol>
     </section> -->
 </body>
-<script src="./Tween.min.js"></script>
+<!-- <script src="./Tween.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js"></script>
 <script src="https://at.alicdn.com/t/font_868515_gskwi7qv02q.js"></script>
 <!-- 存储服务 -->
-<script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
 <script src="./main.js"></script>
-<script src="./message.js"></script>
+<script src="./message.js"></script> -->
 
 </html>
